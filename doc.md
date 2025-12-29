@@ -4,10 +4,15 @@ An on line card stor based on NextJs
 
 ## Stack
 
-- NextJs
+- Next.js
 - Prisma 7
-- elysiajs
+- elysiaJS
 - Motion
 - Lucide Icon
 - TailwindCSS
 - betteur-auth
+- nuqs
+- Bun
+- TypeScript
+- PostgreSQL
+- Vercel (Deployment)
