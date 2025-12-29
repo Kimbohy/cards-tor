@@ -167,7 +167,7 @@ export default function DecksPage() {
               className="flex flex-col rounded-xl border border-zinc-200 bg-white p-4 shadow-sm transition-transform hover:scale-[1.02] dark:border-zinc-700 dark:bg-zinc-900"
             >
               {/* Image placeholder */}
-              <div className="mb-3 flex h-32 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+              <div className="mb-3 flex h-32 items-center justify-center rounded-lg bg-linear-to-br from-blue-500 to-purple-600">
                 {deck.images[0] ? (
                   <img
                     src={deck.images[0].url}
