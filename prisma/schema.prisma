@@ -83,3 +83,36 @@ model Verification {
   @@index([identifier])
   @@map("verification")
 }
+
+model Deck {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      Image[]
+  prices      Price[]
+}
+
+model Image {
+  id        String   @id @default(cuid())
+  deckId   String
+
+  url       String
+  altText   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  deck     Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
+}
+
+model Price {
+  id        String   @id @default(cuid())
+  deckId   String
+  amount    Float
+  currency  String   @default("USD")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  deck     Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
+}
