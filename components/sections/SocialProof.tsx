@@ -27,7 +27,7 @@ const testimonials = [
 
 export default function SocialProof() {
   return (
-    <section className="py-24 bg-background">
+    <section id="SocialProof" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
@@ -39,7 +39,7 @@ export default function SocialProof() {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="p-8 bg-card backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
+              className="p-8 bg-card backdrop-blur-sm border-border shadow-lg hover:shadow-xl  hover:-translate-y-2"
             >
               <CardContent className="p-0 relative">
                 <Quote className="w-12 h-12 text-muted-foreground/30 absolute top-0 right-0" />

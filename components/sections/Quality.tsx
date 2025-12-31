@@ -26,7 +26,7 @@ const qualities = [
 
 export default function Quality() {
   return (
-    <section className="py-24 bg-background">
+    <section id="Quality" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
@@ -38,7 +38,7 @@ export default function Quality() {
           {qualities.map((quality, index) => (
             <Card
               key={index}
-              className="flex items-start space-x-6 p-8 bg-card backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+              className="flex items-start space-x-6 p-8 bg-card backdrop-blur-sm border-border shadow-lg hover:shadow-xl  hover:-translate-y-1"
             >
               <div className="shrink-0">
                 <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center">

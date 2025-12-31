@@ -32,7 +32,7 @@ const decks = [
 
 export default function FeaturedDecks() {
   return (
-    <section className="py-24 bg-background text-foreground">
+    <section id="FeaturedDecks" className="py-24 bg-background text-foreground">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
@@ -44,7 +44,7 @@ export default function FeaturedDecks() {
           {decks.map((deck) => (
             <Card
               key={deck.id}
-              className="overflow-hidden bg-card border-border hover:border-primary transition-all duration-500 hover:shadow-lg backdrop-blur-sm group"
+              className="overflow-hidden bg-card border-border hover:border-primary  hover:shadow-lg backdrop-blur-sm group"
             >
               <div className="relative overflow-hidden">
                 <Image
@@ -73,7 +73,7 @@ export default function FeaturedDecks() {
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   {deck.description}
                 </p>
-                <Button className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-semibold py-3 transition-all duration-300">
+                <Button className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-semibold py-3 ">
                   View Deck
                 </Button>
               </CardContent>

@@ -2,6 +2,8 @@
 import { useSession } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import { motion } from "motion/react";
 const Nav = () => {
   const { data: session } = useSession();
   return (

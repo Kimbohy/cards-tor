@@ -4,7 +4,10 @@ import { Mail, Sparkles } from "lucide-react";
 
 export default function Newsletter() {
   return (
-    <section className="py-24 bg-background text-foreground relative overflow-hidden">
+    <section
+      id="Newsletter"
+      className="py-24 bg-background text-foreground relative overflow-hidden"
+    >
       <div className="absolute inset-0 bg-[url('/icon/images/pattern.png')] opacity-5"></div>
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -25,8 +28,8 @@ export default function Newsletter() {
               placeholder="Your email address"
               className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/50 h-14 text-lg rounded-lg"
             />
-            <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-serif font-semibold px-8 py-4 h-14 text-lg transition-all duration-300 hover:shadow-lg">
-              <Mail className="w-5 h-5 mr-2" />
+            <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-serif font-semibold px-8 py-4 h-14 text-lg  hover:shadow-lg">
+              <Mail className="w-8 h-8 text-primary-foreground" />
               Subscribe
             </Button>
           </div>

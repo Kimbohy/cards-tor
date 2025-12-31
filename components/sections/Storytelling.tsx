@@ -2,7 +2,10 @@ import Image from "next/image";
 
 export default function Storytelling() {
   return (
-    <section className="py-24 bg-background text-foreground relative overflow-hidden">
+    <section
+      id="Storytelling"
+      className="py-24 bg-background text-foreground relative overflow-hidden"
+    >
       <div className="absolute inset-0 bg-[url('/icon/images/pattern.png')] opacity-5"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
