@@ -6,27 +6,27 @@ import Image from "next/image";
 const decks = [
   {
     id: 1,
-    name: "Deck Luxe Noir",
+    name: "Black Luxury Deck",
     price: "€89",
-    image: "/icon/images/deck1.jpg", // placeholder
+    image: "/images/aditya-chinchure-oifLHPCN4Vs-unsplash.jpg",
     badge: "Best Seller",
-    description: "Deck premium avec finition noire élégante.",
+    description: "Premium deck with elegant black finish.",
   },
   {
     id: 2,
-    name: "Deck Magie Rouge",
+    name: "Red Magic Deck",
     price: "€75",
-    image: "/icon/images/deck2.jpg",
+    image: "/images/sven-ciupka-HyjpI3rEGGE-unsplash.jpg",
     badge: "Limited",
-    description: "Parfait pour les tours de magie professionnels.",
+    description: "Perfect for professional magic tricks.",
   },
   {
     id: 3,
-    name: "Deck Collection Or",
+    name: "Gold Collection Deck",
     price: "€120",
-    image: "/icon/images/deck3.jpg",
+    image: "/images/sven-ciupka-WbosA2fQy_o-unsplash.jpg",
     badge: "New",
-    description: "Édition collector avec dorure 24k.",
+    description: "Collector's edition with 24k gold plating.",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function FeaturedDecks() {
                   height={300}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
                 <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground font-semibold px-3 py-1">
                   {deck.badge}
                 </Badge>
@@ -74,7 +74,7 @@ export default function FeaturedDecks() {
                   {deck.description}
                 </p>
                 <Button className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-semibold py-3 transition-all duration-300">
-                  Voir le deck
+                  View Deck
                 </Button>
               </CardContent>
             </Card>

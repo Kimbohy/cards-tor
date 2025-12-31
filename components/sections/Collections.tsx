@@ -4,23 +4,23 @@ import { Crown, Sparkles, Palette, Wand2 } from "lucide-react";
 const categories = [
   {
     icon: Crown,
-    title: "Collection de Luxe",
-    description: "Decks premium pour collectionneurs exigeants.",
+    title: "Luxury Collection",
+    description: "Premium decks for discerning collectors.",
   },
   {
     icon: Sparkles,
-    title: "Édition Limitée",
-    description: "Pièces uniques et numérotées.",
+    title: "Limited Edition",
+    description: "Unique and numbered pieces.",
   },
   {
     icon: Palette,
-    title: "Artistiques / Illustrées",
-    description: "Créations originales d'artistes talentueux.",
+    title: "Artistic / Illustrated",
+    description: "Original creations by talented artists.",
   },
   {
     icon: Wand2,
-    title: "Spécial Magie / Cardistry",
-    description: "Outils parfaits pour magiciens et manipulateurs.",
+    title: "Magic / Cardistry Special",
+    description: "Perfect tools for magicians and card manipulators.",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function Collections() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
-            Collections d'Exception
+            Exceptional Collections
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>

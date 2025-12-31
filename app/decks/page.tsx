@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-// Types pour les decks
+// Types for decks
 interface Deck {
   id: string;
   name: string;
@@ -22,16 +22,16 @@ export default function DecksPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Formulaire
+  // Form
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-  // Charger les decks au montage
+  // Load decks on mount
   useEffect(() => {
     fetchDecks();
   }, []);
 
-  // Charger les decks
+  // Load decks
   const fetchDecks = async () => {
     setLoading(true);
     try {
@@ -41,16 +41,16 @@ export default function DecksPage() {
       if (res.ok && data.success) {
         setDecks(data.data);
       } else {
-        setError(data.message || "Erreur lors du chargement");
+        setError(data.message || "Loading error");
       }
     } catch {
-      setError("Erreur de connexion");
+      setError("Connection error");
     } finally {
       setLoading(false);
     }
   };
 
-  // Créer un deck
+  // Create a deck
   const createDeck = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -73,16 +73,16 @@ export default function DecksPage() {
       const data = await res.json();
 
       if (res.ok && data.success) {
-        // Ajouter le deck à la liste
+        // Add deck to list
         setDecks((prev) => [data.data, ...prev]);
         // Reset form
         setName("");
         setDescription("");
       } else {
-        setError(data.message || "Erreur lors de la création");
+        setError(data.message || "Creation error");
       }
     } catch {
-      setError("Erreur de connexion");
+      setError("Connection error");
     } finally {
       setLoading(false);
     }
@@ -92,21 +92,21 @@ export default function DecksPage() {
     <div className="min-h-screen bg-zinc-50 p-8 dark:bg-zinc-950">
       <div className="mx-auto max-w-4xl">
         <h1 className="mb-8 text-3xl font-bold text-zinc-900 dark:text-white">
-          🃏 Mes Decks de Cartes
+          🃏 My Card Decks
         </h1>
 
-        {/* Formulaire de création */}
+        {/* Creation form */}
         <div className="mb-8 rounded-xl bg-white p-6 shadow-sm dark:bg-zinc-900">
           <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
-            Créer un nouveau deck
+            Create a new deck
           </h2>
 
           <form onSubmit={createDeck} className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
-              {/* Nom */}
+              {/* Name */}
               <div>
                 <label className="mb-1 block text-sm text-zinc-600 dark:text-zinc-400">
-                  Nom du deck *
+                  Deck name *
                 </label>
                 <input
                   type="text"
@@ -121,13 +121,13 @@ export default function DecksPage() {
               {/* Description */}
               <div>
                 <label className="mb-1 block text-sm text-zinc-600 dark:text-zinc-400">
-                  Description (optionnel)
+                  Description (optional)
                 </label>
                 <input
                   type="text"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Ex: Deck classique rouge"
+                  placeholder="Ex: Classic red deck"
                   className="w-full rounded-lg border border-zinc-300 px-3 py-2 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
                 />
               </div>
@@ -145,7 +145,7 @@ export default function DecksPage() {
                 disabled={loading || !name}
                 className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:opacity-50"
               >
-                {loading ? "Création..." : "Créer le deck"}
+                {loading ? "Creating..." : "Create deck"}
               </button>
               <button
                 type="button"
@@ -153,13 +153,13 @@ export default function DecksPage() {
                 disabled={loading}
                 className="rounded-lg border border-zinc-300 px-4 py-2 font-medium text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
-                Rafraîchir
+                Refresh
               </button>
             </div>
           </form>
         </div>
 
-        {/* Liste des decks */}
+        {/* Deck list */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {decks.map((deck) => (
             <div
@@ -179,7 +179,7 @@ export default function DecksPage() {
                 )}
               </div>
 
-              {/* Nom */}
+              {/* Name */}
               <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
                 {deck.name}
               </h3>
@@ -191,7 +191,7 @@ export default function DecksPage() {
                 </p>
               )}
 
-              {/* Prix */}
+              {/* Price */}
               {deck.prices[0] && (
                 <div className="mt-2 text-lg font-bold text-green-600 dark:text-green-400">
                   {deck.prices[0].amount} {deck.prices[0].currency}
@@ -200,20 +200,21 @@ export default function DecksPage() {
 
               {/* Date */}
               <p className="mt-auto pt-3 text-xs text-zinc-400">
-                Créé le {new Date(deck.createdAt).toLocaleDateString("fr-FR")}
+                Created on{" "}
+                {new Date(deck.createdAt).toLocaleDateString("en-US")}
               </p>
             </div>
           ))}
 
           {decks.length === 0 && !loading && (
             <div className="col-span-full py-12 text-center text-zinc-500 dark:text-zinc-400">
-              Aucun deck. Créez-en un !
+              No decks. Create one!
             </div>
           )}
 
           {loading && decks.length === 0 && (
             <div className="col-span-full py-12 text-center text-zinc-500 dark:text-zinc-400">
-              Chargement...
+              Loading...
             </div>
           )}
         </div>

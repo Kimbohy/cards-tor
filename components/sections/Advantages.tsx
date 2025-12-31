@@ -4,23 +4,23 @@ import { Truck, RotateCcw, ShieldCheck, Headphones } from "lucide-react";
 const advantages = [
   {
     icon: Truck,
-    title: "Livraison Rapide",
-    description: "Expédition sous 24-48h avec suivi en temps réel.",
+    title: "Fast Delivery",
+    description: "Shipping within 24-48h with real-time tracking.",
   },
   {
     icon: RotateCcw,
-    title: "Politique de Retour",
-    description: "Retour gratuit sous 30 jours si insatisfait.",
+    title: "Return Policy",
+    description: "Free return within 30 days if not satisfied.",
   },
   {
     icon: ShieldCheck,
-    title: "Paiement Sécurisé",
-    description: "Cryptage SSL et méthodes de paiement fiables.",
+    title: "Secure Payment",
+    description: "SSL encryption and reliable payment methods.",
   },
   {
     icon: Headphones,
-    title: "Service Client",
-    description: "Support disponible 7j/7 pour vos questions.",
+    title: "Customer Service",
+    description: "Support available 7/7 for your questions.",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function Advantages() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
-            Avantages & Garanties d'Excellence
+            Advantages & Guarantees of Excellence
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>

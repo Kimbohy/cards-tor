@@ -2,7 +2,7 @@ import Nav from "./hero/Nav";
 
 const Hero = () => {
   return (
-    <div className="h-screen w-screen hero p-7 text-white flex flex-col items-center">
+    <div className="h-screen w-screen hero p-7 text-white font-serif flex flex-col items-center">
       <Nav />
       <span className="text-8xl md:mt-20 flex-1">Place to find your cards</span>
       <div className=" flex justify-end w-full mb-20 mr-10">

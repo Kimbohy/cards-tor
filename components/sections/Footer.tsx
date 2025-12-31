@@ -12,13 +12,13 @@ export default function Footer() {
             Cards-Tor
           </h3>
           <p className="text-muted-foreground font-light text-lg max-w-md mx-auto">
-            Des cartes d'exception pour les passionnés du jeu et de la magie.
+            Exceptional cards for gaming and magic enthusiasts.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="text-center md:text-left">
             <h4 className="font-serif font-semibold mb-6 text-primary text-lg">
-              Produits
+              Products
             </h4>
             <ul className="space-y-3 text-muted-foreground">
               <li>
@@ -26,7 +26,7 @@ export default function Footer() {
                   href="#"
                   className="hover:text-primary transition-colors duration-300 font-light"
                 >
-                  Decks Luxe
+                  Luxury Decks
                 </a>
               </li>
               <li>
@@ -34,7 +34,7 @@ export default function Footer() {
                   href="#"
                   className="hover:text-primary transition-colors duration-300 font-light"
                 >
-                  Éditions Limitées
+                  Limited Editions
                 </a>
               </li>
               <li>
@@ -42,7 +42,7 @@ export default function Footer() {
                   href="#"
                   className="hover:text-primary transition-colors duration-300 font-light"
                 >
-                  Accessoires
+                  Accessories
                 </a>
               </li>
             </ul>
@@ -65,7 +65,7 @@ export default function Footer() {
                   href="#"
                   className="hover:text-primary transition-colors duration-300 font-light"
                 >
-                  Livraison
+                  Delivery
                 </a>
               </li>
               <li>
@@ -73,14 +73,14 @@ export default function Footer() {
                   href="#"
                   className="hover:text-primary transition-colors duration-300 font-light"
                 >
-                  Retours
+                  Returns
                 </a>
               </li>
             </ul>
           </div>
           <div className="text-center md:text-left">
             <h4 className="font-serif font-semibold mb-6 text-primary text-lg">
-              Suivez-nous
+              Follow Us
             </h4>
             <div className="flex justify-center md:justify-start space-x-6">
               <Facebook className="w-6 h-6 hover:text-primary cursor-pointer transition-colors duration-300" />
@@ -93,27 +93,27 @@ export default function Footer() {
               Newsletter
             </h4>
             <p className="text-muted-foreground font-light text-sm leading-relaxed">
-              Restez informé des dernières créations et éditions limitées.
+              Stay informed about the latest creations and limited editions.
             </p>
           </div>
         </div>
         <Separator className="bg-border mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center text-muted-foreground text-sm">
           <p className="font-light">
-            &copy; 2025 Cards-Tor. Tous droits réservés.
+            &copy; 2025 Cards-Tor. All rights reserved.
           </p>
           <div className="flex space-x-8 mt-4 md:mt-0">
             <a
               href="#"
               className="hover:text-primary transition-colors duration-300 font-light"
             >
-              Mentions légales
+              Legal Notice
             </a>
             <a
               href="#"
               className="hover:text-primary transition-colors duration-300 font-light"
             >
-              Politique de confidentialité
+              Privacy Policy
             </a>
           </div>
         </div>

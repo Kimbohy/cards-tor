@@ -3,24 +3,24 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Jean Dupont",
-    role: "Magicien Professionnel",
+    name: "John Smith",
+    role: "Professional Magician",
     content:
-      "Ces cartes sont d'une qualité exceptionnelle. Elles glissent parfaitement et résistent à l'usage intensif.",
+      "These cards are of exceptional quality. They glide perfectly and withstand intensive use.",
     rating: 5,
   },
   {
-    name: "Marie Leroy",
-    role: "Collectionneuse",
+    name: "Mary Johnson",
+    role: "Collector",
     content:
-      "Le design est magnifique et l'édition limitée rend chaque deck unique. Une vraie pièce de collection.",
+      "The design is magnificent and the limited edition makes each deck unique. A true collector's piece.",
     rating: 5,
   },
   {
-    name: "Pierre Martin",
-    role: "Joueur de Poker",
+    name: "Peter Williams",
+    role: "Poker Player",
     content:
-      "Le confort en main est incroyable. Ces cartes transforment l'expérience de jeu.",
+      "The feel in hand is incredible. These cards transform the gaming experience.",
     rating: 5,
   },
 ];
@@ -31,7 +31,7 @@ export default function SocialProof() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
-            Témoignages d'Exception
+            Exceptional Testimonials
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>

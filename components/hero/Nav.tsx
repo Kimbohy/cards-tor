@@ -21,7 +21,7 @@ const Nav = () => {
               Register
             </Link>
             <Link href="/login" className="text-3xl">
-              SignIn
+              Sign In
             </Link>
           </>
         )}

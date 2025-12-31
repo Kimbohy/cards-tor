@@ -4,25 +4,23 @@ import { FileText, Printer, Clock, CheckCircle } from "lucide-react";
 const qualities = [
   {
     icon: FileText,
-    title: "Papier Premium",
-    description:
-      "Carte de 300gsm avec texture veloutée pour un toucher exceptionnel.",
+    title: "Premium Paper",
+    description: "300gsm card stock with velvety texture for exceptional feel.",
   },
   {
     icon: Printer,
-    title: "Impression Haute Qualité",
-    description: "Technologie d'impression offset avec encres végétales.",
+    title: "High Quality Printing",
+    description: "Offset printing technology with vegetable-based inks.",
   },
   {
     icon: Clock,
-    title: "Durabilité",
-    description: "Résistance à l'usure et conservation parfaite dans le temps.",
+    title: "Durability",
+    description: "Wear resistance and perfect preservation over time.",
   },
   {
     icon: CheckCircle,
     title: "Certification",
-    description:
-      "Matériaux certifiés et processus respectueux de l'environnement.",
+    description: "Certified materials and environmentally friendly processes.",
   },
 ];
 
@@ -32,7 +30,7 @@ export default function Quality() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
-            Qualité & Artisanat d'Exception
+            Quality & Exceptional Craftsmanship
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
@@ -42,7 +40,7 @@ export default function Quality() {
               key={index}
               className="flex items-start space-x-6 p-8 bg-card backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
             >
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center">
                   <quality.icon className="w-8 h-8 text-primary" />
                 </div>

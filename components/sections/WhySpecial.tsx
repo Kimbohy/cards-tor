@@ -4,25 +4,24 @@ import { Star, Shield, Sparkles, Award } from "lucide-react";
 const features = [
   {
     icon: Star,
-    title: "Qualité Premium",
-    description:
-      "Papier de haute qualité avec finition mate et dorure élégante.",
+    title: "Premium Quality",
+    description: "High-quality paper with matte finish and elegant gilding.",
   },
   {
     icon: Shield,
-    title: "Fabrication Artisanale",
-    description: "Chaque deck est créé à la main avec soin et précision.",
+    title: "Artisanal Manufacturing",
+    description: "Each deck is handcrafted with care and precision.",
   },
   {
     icon: Sparkles,
-    title: "Édition Limitée",
-    description: "Collections exclusives et numérotées pour collectionneurs.",
+    title: "Limited Edition",
+    description: "Exclusive and numbered collections for collectors.",
   },
   {
     icon: Award,
-    title: "Design Unique",
+    title: "Unique Design",
     description:
-      "Illustrations originales et positionnement luxe pour le jeu et la magie.",
+      "Original illustrations and luxury positioning for gaming and magic.",
   },
 ];
 
@@ -32,7 +31,7 @@ export default function WhySpecial() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
-            Pourquoi ces cartes sont spéciales ?
+            Why are these cards special?
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>

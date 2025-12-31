@@ -16,7 +16,7 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Rediriger si déjà connecté
+  // Redirect if already logged in
   if (session && !sessionLoading) {
     router.push("/dashboard");
     return null;
@@ -29,19 +29,19 @@ export default function LoginPage() {
 
     try {
       if (isLogin) {
-        // Connexion
+        // Login
         const { error } = await signIn.email({
           email,
           password,
         });
 
         if (error) {
-          setError(error.message || "Erreur de connexion");
+          setError(error.message || "Login error");
         } else {
           router.push("/dashboard");
         }
       } else {
-        // Inscription
+        // Sign up
         const { error } = await signUp.email({
           email,
           password,
@@ -49,13 +49,13 @@ export default function LoginPage() {
         });
 
         if (error) {
-          setError(error.message || "Erreur d'inscription");
+          setError(error.message || "Sign up error");
         } else {
           router.push("/dashboard");
         }
       }
     } catch (err) {
-      setError("Une erreur inattendue s'est produite");
+      setError("An unexpected error occurred");
     } finally {
       setLoading(false);
     }
@@ -64,7 +64,7 @@ export default function LoginPage() {
   if (sessionLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <p>Chargement...</p>
+        <p>Loading...</p>
       </div>
     );
   }
@@ -74,12 +74,10 @@ export default function LoginPage() {
       <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-lg dark:bg-zinc-900">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">
-            {isLogin ? "Connexion" : "Inscription"}
+            {isLogin ? "Login" : "Sign Up"}
           </h1>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            {isLogin
-              ? "Connectez-vous à votre compte"
-              : "Créez un nouveau compte"}
+            {isLogin ? "Log in to your account" : "Create a new account"}
           </p>
         </div>
 
@@ -90,7 +88,7 @@ export default function LoginPage() {
                 htmlFor="name"
                 className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
               >
-                Nom
+                Name
               </label>
               <input
                 id="name"
@@ -99,7 +97,7 @@ export default function LoginPage() {
                 onChange={(e) => setName(e.target.value)}
                 required={!isLogin}
                 className="mt-1 block w-full rounded-lg border border-zinc-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
-                placeholder="Votre nom"
+                placeholder="Your name"
               />
             </div>
           )}
@@ -118,7 +116,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="mt-1 block w-full rounded-lg border border-zinc-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
-              placeholder="vous@exemple.com"
+              placeholder="you@example.com"
             />
           </div>
 
@@ -127,7 +125,7 @@ export default function LoginPage() {
               htmlFor="password"
               className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Mot de passe
+              Password
             </label>
             <input
               id="password"
@@ -152,11 +150,7 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading
-              ? "Chargement..."
-              : isLogin
-                ? "Se connecter"
-                : "S'inscrire"}
+            {loading ? "Loading..." : isLogin ? "Log In" : "Sign Up"}
           </button>
         </form>
 
@@ -170,8 +164,8 @@ export default function LoginPage() {
             className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400"
           >
             {isLogin
-              ? "Pas de compte ? S'inscrire"
-              : "Déjà un compte ? Se connecter"}
+              ? "No account? Sign up"
+              : "Already have an account? Log in"}
           </button>
         </div>
 
@@ -180,7 +174,7 @@ export default function LoginPage() {
             href="/"
             className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
           >
-            ← Retour à l'accueil
+            ← Back to home
           </Link>
         </div>
       </div>

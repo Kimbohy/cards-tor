@@ -12,28 +12,28 @@ export default function Newsletter() {
             <Sparkles className="w-20 h-20 mx-auto mb-6 text-primary" />
           </div>
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-6 text-primary">
-            Rejoignez l'Élite
+            Join the Elite
           </h2>
           <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto font-light">
-            Sois informé des nouvelles éditions limitées et découvre en
-            exclusivité nos dernières créations. Rejoins notre communauté de
-            passionnés d'exception !
+            Stay informed about new limited editions and discover our latest
+            creations exclusively. Join our community of exceptional
+            enthusiasts!
           </p>
           <div className="flex flex-col sm:flex-row gap-6 max-w-lg mx-auto">
             <Input
               type="email"
-              placeholder="Votre adresse email"
+              placeholder="Your email address"
               className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/50 h-14 text-lg rounded-lg"
             />
             <Button className="bg-primary hover:bg-primary/80 text-primary-foreground font-serif font-semibold px-8 py-4 h-14 text-lg transition-all duration-300 hover:shadow-lg">
               <Mail className="w-5 h-5 mr-2" />
-              S'inscrire
+              Subscribe
             </Button>
           </div>
           <div className="mt-8">
             <p className="text-sm text-muted-foreground italic">
-              Rejoignez l'exclusivité • Découvrez l'art du jeu • Vivez
-              l'expérience premium
+              Join the exclusivity • Discover the art of gaming • Experience
+              premium quality
             </p>
           </div>
         </div>

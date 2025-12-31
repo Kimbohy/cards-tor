@@ -9,38 +9,37 @@ export default function Storytelling() {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl md:text-5xl font-serif font-light mb-6 text-primary">
-                Notre Histoire d'Excellence
+                Our Story of Excellence
               </h2>
               <div className="w-24 h-1 bg-primary mb-8"></div>
             </div>
             <p className="text-xl text-muted-foreground leading-relaxed font-light">
-              Cards-Tor est né de la passion pour l'art du jeu de cartes. Nous
-              croyons que chaque deck raconte une histoire, et nous nous
-              engageons à créer des cartes qui transcendent le simple objet pour
-              devenir des œuvres d'art.
+              Cards-Tor was born from a passion for the art of card games. We
+              believe that each deck tells a story, and we are committed to
+              creating cards that transcend mere objects to become works of art.
             </p>
             <p className="text-xl text-muted-foreground leading-relaxed font-light">
-              Notre vision : offrir des decks premium qui combinent qualité
-              artisanale, design innovant et expérience unique pour joueurs,
-              magiciens et collectionneurs.
+              Our vision: to offer premium decks that combine artisanal quality,
+              innovative design and a unique experience for players, magicians
+              and collectors.
             </p>
             <p className="text-xl text-muted-foreground leading-relaxed font-light">
-              Avec passion et dévouement, nous créons des cartes qui inspirent
-              et enchantent.
+              With passion and dedication, we create cards that inspire and
+              enchant.
             </p>
             <div className="pt-4">
               <div className="inline-block border border-border px-6 py-3">
                 <p className="text-primary font-serif italic text-lg">
-                  "L'art du jeu, élevé à son plus haut niveau"
+                  "The art of gaming, elevated to its highest level"
                 </p>
               </div>
             </div>
           </div>
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-transparent rounded-lg blur-xl"></div>
+            <div className="absolute -inset-4 bg-linear-to-r from-primary/20 to-transparent rounded-lg blur-xl"></div>
             <Image
-              src="/icon/images/story.jpg" // placeholder
-              alt="Notre histoire"
+              src="/images/sven-ciupka-8H3cWNtBpdQ-unsplash.jpg"
+              alt="Our story"
               width={600}
               height={400}
               className="rounded-lg shadow-lg relative z-10 border border-border"

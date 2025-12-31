@@ -7,29 +7,29 @@ import {
 
 const faqs = [
   {
-    question: "Quelle est la durée de livraison ?",
+    question: "What is the delivery time?",
     answer:
-      "Nous expédions sous 24-48h. La livraison prend généralement 3-5 jours ouvrés en France métropolitaine.",
+      "We ship within 24-48h. Delivery usually takes 3-5 business days in metropolitan France.",
   },
   {
-    question: "Les cartes sont-elles originales ?",
+    question: "Are the cards original?",
     answer:
-      "Oui, toutes nos cartes sont des créations originales. Chaque deck est fabriqué sur commande pour garantir la fraîcheur.",
+      "Yes, all our cards are original creations. Each deck is made to order to ensure freshness.",
   },
   {
-    question: "Le stock est-il limité ?",
+    question: "Is the stock limited?",
     answer:
-      "Certaines éditions sont limitées. Nous indiquons clairement la disponibilité sur chaque fiche produit.",
+      "Some editions are limited. We clearly indicate availability on each product page.",
   },
   {
-    question: "Pour qui sont ces cartes ?",
+    question: "Who are these cards for?",
     answer:
-      "Nos decks conviennent aux joueurs de cartes, magiciens, collectionneurs et amateurs de belles cartes.",
+      "Our decks are suitable for card players, magicians, collectors and lovers of beautiful cards.",
   },
   {
-    question: "Comment entretenir les cartes ?",
+    question: "How to maintain the cards?",
     answer:
-      "Conservez-les dans leur boîte, à l'abri de l'humidité et de la lumière directe. Nettoyez avec un chiffon microfibre.",
+      "Keep them in their box, away from moisture and direct light. Clean with a microfiber cloth.",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function FAQ() {
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
-            Questions Fréquentes
+            Frequently Asked Questions
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
