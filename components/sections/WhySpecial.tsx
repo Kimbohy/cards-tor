@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Star, Shield, Sparkles, Award } from "lucide-react";
-import ThemTrigger from "../Them-trigger";
 
 const features = [
   {
@@ -35,7 +34,6 @@ export default function WhySpecial() {
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
             Why are these cards special?
           </h2>
-          <ThemTrigger />
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

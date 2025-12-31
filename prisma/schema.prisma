@@ -92,6 +92,7 @@ model Deck {
   updatedAt   DateTime @updatedAt
   images      Image[]
   prices      Price[]
+  keyFeatures DeckKeyFeature[]
 }
 
 model Image {
@@ -115,4 +116,36 @@ model Price {
   updatedAt DateTime @updatedAt
 
   deck     Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
+}
+
+enum KeyFeatureType {
+  QUALITY
+  DESIGN
+  USABILITY
+  DURABILITY
+  UNIQUENESS
+  PRODUCTION
+  PRICE
+}
+
+model KeyFeature {
+  id        String   @id @default(cuid())
+  title     String
+  detail    String?
+  type      KeyFeatureType @default(QUALITY)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  decks     DeckKeyFeature[]
+}
+
+model DeckKeyFeature {
+  deckId      String
+  keyFeatureId String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  deck        Deck       @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  keyFeature  KeyFeature @relation(fields: [keyFeatureId], references: [id], onDelete: Cascade)
+
+  @@unique([deckId, keyFeatureId])
 }

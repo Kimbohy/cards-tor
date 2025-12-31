@@ -1,0 +1,5 @@
+-- CreateEnum
+CREATE TYPE "KeyFeatureType" AS ENUM ('QUALITY', 'DESIGN', 'USABILITY', 'DURABILITY', 'UNIQUENESS', 'PRODUCTION', 'PRICE');
+
+-- AlterTable
+ALTER TABLE "KeyFeature" ADD COLUMN     "type" "KeyFeatureType" NOT NULL DEFAULT 'QUALITY';
