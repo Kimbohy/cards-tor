@@ -4,23 +4,25 @@ import { FileText, Printer, Clock, CheckCircle } from "lucide-react";
 const qualities = [
   {
     icon: FileText,
-    title: "Premium Paper",
-    description: "300gsm card stock with velvety texture for exceptional feel.",
+    title: "Premium Paper Stock",
+    description:
+      "Professional-grade card stock optimized for cardistry and magic handling.",
   },
   {
     icon: Printer,
-    title: "High Quality Printing",
-    description: "Offset printing technology with vegetable-based inks.",
+    title: "Top Manufacturers",
+    description: "Cards from leading premium playing card producers worldwide.",
   },
   {
     icon: Clock,
-    title: "Durability",
-    description: "Wear resistance and perfect preservation over time.",
+    title: "Performance Durability",
+    description:
+      "Designed to withstand intensive use in cardistry, magic, and gaming.",
   },
   {
     icon: CheckCircle,
-    title: "Certification",
-    description: "Certified materials and environmentally friendly processes.",
+    title: "Quality Selection",
+    description: "Carefully curated decks meeting professional standards.",
   },
 ];
 
@@ -30,7 +32,7 @@ export default function Quality() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
-            Quality & Exceptional Craftsmanship
+            Premium Quality Productions
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>

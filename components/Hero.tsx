@@ -12,8 +12,8 @@ const Hero = () => {
         <p className="w-2xl text-3xl text-end">
           The ultimate platform to buy your new deck.
           <br />
-          Explore a wide variety of card decks and find the perfect one for you
-          if you are a collector or a player, for poker or magic the gathering.
+          Explore premium playing card productions designed for cardistry,
+          magic, and card games. Find the perfect deck for your practice.
         </p>
       </div>
     </section>

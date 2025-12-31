@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Facebook, Instagram, Twitter, Crown } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,8 +8,14 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[url('/icon/images/pattern.png')] opacity-5"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <Crown className="w-16 h-16 mx-auto mb-4 text-primary" />
-          <h3 className="font-serif text-2xl font-light text-primary mb-2">
+          <Image
+            src="/cards.svg"
+            alt="Crown"
+            width={80}
+            height={80}
+            className="mx-auto mb-4"
+          />
+          <h3 className="font-serif text-3xl font-light text-primary mb-2">
             Cards-Tor
           </h3>
           <p className="text-muted-foreground font-light text-lg max-w-md mx-auto">

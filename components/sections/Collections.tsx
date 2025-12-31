@@ -20,7 +20,8 @@ const categories = [
   {
     icon: Wand2,
     title: "Magic / Cardistry Special",
-    description: "Perfect tools for magicians and card manipulators.",
+    description:
+      "Premium decks designed for magicians, cardistry, and card game players.",
   },
 ];
 

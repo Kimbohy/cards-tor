@@ -5,13 +5,15 @@ import ThemTrigger from "../Them-trigger";
 const features = [
   {
     icon: Star,
-    title: "Premium Quality",
-    description: "High-quality paper with matte finish and elegant gilding.",
+    title: "Premium Productions",
+    description:
+      "High-quality playing cards from renowned premium manufacturers.",
   },
   {
     icon: Shield,
-    title: "Artisanal Manufacturing",
-    description: "Each deck is handcrafted with care and precision.",
+    title: "Professional Grade",
+    description:
+      "Cards designed specifically for cardistry, magic, and card games.",
   },
   {
     icon: Sparkles,
@@ -21,8 +23,7 @@ const features = [
   {
     icon: Award,
     title: "Unique Design",
-    description:
-      "Original illustrations and luxury positioning for gaming and magic.",
+    description: "Original illustrations perfect for performance and play.",
   },
 ];
 

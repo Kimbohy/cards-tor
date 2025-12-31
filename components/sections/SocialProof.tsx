@@ -6,21 +6,21 @@ const testimonials = [
     name: "John Smith",
     role: "Professional Magician",
     content:
-      "These cards are of exceptional quality. They glide perfectly and withstand intensive use.",
+      "Premium quality cards perfect for magic performances. They handle beautifully and are built to last.",
     rating: 5,
   },
   {
     name: "Mary Johnson",
-    role: "Collector",
+    role: "Cardistry Enthusiast",
     content:
-      "The design is magnificent and the limited edition makes each deck unique. A true collector's piece.",
+      "These decks are perfect for cardistry. The finish and quality make every flourish smooth and visually stunning.",
     rating: 5,
   },
   {
     name: "Peter Williams",
-    role: "Poker Player",
+    role: "Card Game Player",
     content:
-      "The feel in hand is incredible. These cards transform the gaming experience.",
+      "The feel in hand is incredible. Premium playing cards that elevate any card game session.",
     rating: 5,
   },
 ];

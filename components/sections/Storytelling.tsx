@@ -17,23 +17,24 @@ export default function Storytelling() {
               <div className="w-24 h-1 bg-primary mb-8"></div>
             </div>
             <p className="text-xl text-muted-foreground leading-relaxed font-light">
-              Cards-Tor was born from a passion for the art of card games. We
-              believe that each deck tells a story, and we are committed to
-              creating cards that transcend mere objects to become works of art.
+              Cards-Tor was born from a passion for premium playing cards. We
+              curate the finest decks from top manufacturers worldwide, bringing
+              you exceptional quality for every use.
             </p>
             <p className="text-xl text-muted-foreground leading-relaxed font-light">
-              Our vision: to offer premium decks that combine artisanal quality,
-              innovative design and a unique experience for players, magicians
-              and collectors.
+              Our vision: to offer premium decks from renowned productions,
+              perfectly suited for cardistry, magic performances, and card
+              games. Quality that meets the demands of professionals and
+              enthusiasts.
             </p>
             <p className="text-xl text-muted-foreground leading-relaxed font-light">
-              With passion and dedication, we create cards that inspire and
-              enchant.
+              With careful selection, we bring you cards that elevate your
+              practice and performance.
             </p>
             <div className="pt-4">
               <div className="inline-block border border-border px-6 py-3">
                 <p className="text-primary font-serif italic text-lg">
-                  "The art of gaming, elevated to its highest level"
+                  "Premium playing cards for cardistry, magic, and gaming"
                 </p>
               </div>
             </div>

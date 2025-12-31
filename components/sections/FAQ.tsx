@@ -12,19 +12,19 @@ const faqs = [
       "We ship within 24-48h. Delivery usually takes 3-5 business days in metropolitan France.",
   },
   {
-    question: "Are the cards original?",
+    question: "Are the cards authentic?",
     answer:
-      "Yes, all our cards are original creations. Each deck is made to order to ensure freshness.",
+      "Yes, all our cards come from official premium playing card manufacturers. We guarantee authenticity and quality.",
   },
   {
     question: "Is the stock limited?",
     answer:
-      "Some editions are limited. We clearly indicate availability on each product page.",
+      "Some premium editions are limited productions. We clearly indicate availability on each product page.",
   },
   {
     question: "Who are these cards for?",
     answer:
-      "Our decks are suitable for card players, magicians, collectors and lovers of beautiful cards.",
+      "Our decks are perfect for cardistry practitioners, magicians, card game players, and collectors who appreciate premium quality.",
   },
   {
     question: "How to maintain the cards?",

@@ -18,7 +18,7 @@ const decks = [
     price: "€75",
     image: "/images/sven-ciupka-HyjpI3rEGGE-unsplash.jpg",
     badge: "Limited",
-    description: "Perfect for professional magic tricks.",
+    description: "Perfect for magic performances and cardistry.",
   },
   {
     id: 3,

@@ -18,9 +18,8 @@ export default function Newsletter() {
             Join the Elite
           </h2>
           <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto font-light">
-            Stay informed about new limited editions and discover our latest
-            creations exclusively. Join our community of exceptional
-            enthusiasts!
+            Stay informed about new premium deck releases and limited editions.
+            Join our community of cardistry, magic, and card game enthusiasts!
           </p>
           <div className="flex flex-col sm:flex-row gap-6 max-w-lg mx-auto">
             <Input
@@ -35,8 +34,8 @@ export default function Newsletter() {
           </div>
           <div className="mt-8">
             <p className="text-sm text-muted-foreground italic">
-              Join the exclusivity • Discover the art of gaming • Experience
-              premium quality
+              Premium playing cards • For cardistry, magic & games • Excellence
+              in every deck
             </p>
           </div>
         </div>
