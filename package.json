@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "bun run --bun next dev --turbopack",
-    "dev:webpack": "bun run --bun next dev --webpack",
+    "dev": "bun run --bun next dev --webpack",
     "build": "bun run --bun next build --webpack",
+    "vercel-build": "prisma generate && prisma migrate deploy && bun run --bun next build --webpack",
     "start": "bun run --bun next start",
     "lint": "eslint"
   },
