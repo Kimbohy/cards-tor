@@ -147,5 +147,5 @@ model DeckKeyFeature {
   deck        Deck       @relation(fields: [deckId], references: [id], onDelete: Cascade)
   keyFeature  KeyFeature @relation(fields: [keyFeatureId], references: [id], onDelete: Cascade)
 
-  @@unique([deckId, keyFeatureId])
+  @@id([deckId, keyFeatureId])
 }
