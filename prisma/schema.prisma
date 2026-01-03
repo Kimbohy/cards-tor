@@ -139,6 +139,7 @@ model KeyFeature {
 }
 
 model DeckKeyFeature {
+  id          String @id @default(cuid())
   deckId      String
   keyFeatureId String
   createdAt    DateTime @default(now())
@@ -147,5 +148,5 @@ model DeckKeyFeature {
   deck        Deck       @relation(fields: [deckId], references: [id], onDelete: Cascade)
   keyFeature  KeyFeature @relation(fields: [keyFeatureId], references: [id], onDelete: Cascade)
 
-  @@id([deckId, keyFeatureId])
+  @@unique([deckId, keyFeatureId])
 }
