@@ -180,14 +180,14 @@ export default function DecksPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header Section */}
-      <section className="py-24 bg-background border-b border-border">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background border-b border-border">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-serif font-light mb-6 text-primary">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-light mb-4 sm:mb-6 text-primary">
               Premium Playing Card Decks
             </h1>
-            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <div className="w-20 sm:w-24 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Explore our collection of premium playing cards designed for
               cardistry, magic, and card games. Each deck is carefully selected
               from top manufacturers worldwide.
@@ -197,9 +197,9 @@ export default function DecksPage() {
       </section>
 
       {/* Decks Grid */}
-      <section className="py-16 bg-background">
+      <section className="py-8 sm:py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {mockDecks.map((deck) => {
               const mainImage = deck.images[0];
               const price = deck.prices[0];
@@ -216,30 +216,30 @@ export default function DecksPage() {
                         alt={mainImage.altText || deck.name}
                         width={400}
                         height={300}
-                        className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-56 sm:h-64 md:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
                       {isNew && (
-                        <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground font-semibold px-3 py-1">
+                        <Badge className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-primary text-primary-foreground font-semibold px-2.5 py-1 sm:px-3 sm:py-1 text-xs sm:text-sm">
                           New
                         </Badge>
                       )}
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <p className="text-3xl font-serif font-light text-white">
+                      <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
+                        <p className="text-2xl sm:text-3xl font-serif font-light text-white">
                           €{price.amount}
                         </p>
                       </div>
                     </div>
-                    <CardHeader className="pb-4">
-                      <CardTitle className="text-2xl font-serif text-foreground">
+                    <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6">
+                      <CardTitle className="text-xl sm:text-2xl font-serif text-foreground">
                         {deck.name}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground mb-6 leading-relaxed line-clamp-2">
+                    <CardContent className="px-4 sm:px-6">
+                      <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-2">
                         {deck.description}
                       </p>
-                      <Button className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-semibold py-3">
+                      <Button className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-semibold py-2.5 sm:py-3">
                         View Details
                       </Button>
                     </CardContent>

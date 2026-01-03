@@ -532,11 +532,11 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Back Button */}
-      <div className="container mx-auto px-4 pt-8">
+      <div className="container mx-auto px-4 pt-4 sm:pt-6 md:pt-8">
         <Link href="/decks">
           <Button
             variant="outline"
-            className="group border-border hover:border-primary"
+            className="group border-border hover:border-primary text-sm sm:text-base"
           >
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
             Back to All Decks
@@ -545,11 +545,11 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
       </div>
 
       {/* Main Content */}
-      <section className="py-12 bg-background">
+      <section className="py-6 sm:py-8 md:py-12 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
             {/* Images */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div className="relative overflow-hidden rounded-lg border border-border">
                 <Image
                   src={mainImage.url}
@@ -559,7 +559,7 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
                   className="w-full h-auto object-cover"
                 />
                 {isNew && (
-                  <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground font-semibold px-4 py-2 text-base">
+                  <Badge className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-primary text-primary-foreground font-semibold px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base">
                     New Arrival
                   </Badge>
                 )}
@@ -567,7 +567,7 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
 
               {/* Additional Images */}
               {deck.images.length > 1 && (
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-3 sm:gap-4">
                   {deck.images.slice(1).map((image) => (
                     <div
                       key={image.id}
@@ -578,7 +578,7 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
                         alt={image.altText || deck.name}
                         width={300}
                         height={200}
-                        className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-24 sm:h-32 object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                   ))}
@@ -587,15 +587,15 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
             </div>
 
             {/* Details */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div>
-                <h1 className="text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
                   {deck.name}
                 </h1>
-                <div className="w-24 h-1 bg-primary mb-6"></div>
-                <p className="text-3xl font-serif font-light text-foreground mb-6">
+                <div className="w-20 sm:w-24 h-1 bg-primary mb-4 sm:mb-6"></div>
+                <p className="text-2xl sm:text-3xl font-serif font-light text-foreground mb-4 sm:mb-6">
                   €{price.amount}
-                  <span className="text-sm text-muted-foreground ml-2">
+                  <span className="text-xs sm:text-sm text-muted-foreground ml-2">
                     {price.currency}
                   </span>
                 </p>
@@ -604,10 +604,10 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
               <Separator className="bg-border" />
 
               <div>
-                <h2 className="text-xl font-serif font-semibold mb-4 text-foreground">
+                <h2 className="text-lg sm:text-xl font-serif font-semibold mb-3 sm:mb-4 text-foreground">
                   Description
                 </h2>
-                <p className="text-muted-foreground leading-relaxed text-lg">
+                <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {deck.description}
                 </p>
               </div>
@@ -617,10 +617,10 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
               {/* Key Features */}
               {deck.keyFeatures && deck.keyFeatures.length > 0 && (
                 <div>
-                  <h2 className="text-xl font-serif font-semibold mb-6 text-foreground">
+                  <h2 className="text-lg sm:text-xl font-serif font-semibold mb-4 sm:mb-6 text-foreground">
                     Key Features
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {deck.keyFeatures.map((deckKeyFeature) => {
                       const feature = deckKeyFeature.keyFeature;
                       const FeatureIcon = getFeatureIcon(feature.type);
@@ -628,20 +628,20 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
                       return (
                         <Card
                           key={feature.id}
-                          className="bg-card border-border p-4"
+                          className="bg-card border-border p-3 sm:p-4"
                         >
-                          <CardContent className="p-0 flex items-start space-x-4">
+                          <CardContent className="p-0 flex items-start space-x-3 sm:space-x-4">
                             <div className="shrink-0">
-                              <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center">
-                                <FeatureIcon className="w-6 h-6 text-primary" />
+                              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-muted rounded-full flex items-center justify-center">
+                                <FeatureIcon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                               </div>
                             </div>
                             <div>
-                              <h3 className="font-serif font-semibold text-foreground mb-1">
+                              <h3 className="font-serif font-semibold text-foreground mb-1 text-sm sm:text-base">
                                 {feature.title}
                               </h3>
                               {feature.detail && (
-                                <p className="text-sm text-muted-foreground">
+                                <p className="text-xs sm:text-sm text-muted-foreground">
                                   {feature.detail}
                                 </p>
                               )}
@@ -657,11 +657,11 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
               <Separator className="bg-border" />
 
               {/* CTA */}
-              <div className="space-y-4">
-                <Button className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-serif font-semibold py-6 text-lg">
+              <div className="space-y-3 sm:space-y-4">
+                <Button className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-serif font-semibold py-5 sm:py-6 text-base sm:text-lg">
                   Add to Cart
                 </Button>
-                <p className="text-sm text-muted-foreground text-center">
+                <p className="text-xs sm:text-sm text-muted-foreground text-center px-2">
                   Free shipping on orders over €100 • 30-day return policy
                 </p>
               </div>
@@ -671,42 +671,42 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
       </section>
 
       {/* Additional Info Section */}
-      <section className="py-16 bg-background border-t border-border">
+      <section className="py-8 sm:py-12 md:py-16 bg-background border-t border-border">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-serif font-light mb-8 text-center text-primary">
+            <h2 className="text-2xl sm:text-3xl font-serif font-light mb-6 sm:mb-8 text-center text-primary">
               Perfect For
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="text-center p-6 bg-card border-border">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+              <Card className="text-center p-4 sm:p-6 bg-card border-border">
                 <CardContent className="p-0">
-                  <Sparkles className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h3 className="font-serif font-semibold text-foreground mb-2">
+                  <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 text-primary" />
+                  <h3 className="font-serif font-semibold text-foreground mb-2 text-base sm:text-lg">
                     Cardistry
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Smooth handling for flourishes and complex moves
                   </p>
                 </CardContent>
               </Card>
-              <Card className="text-center p-6 bg-card border-border">
+              <Card className="text-center p-4 sm:p-6 bg-card border-border">
                 <CardContent className="p-0">
-                  <Star className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h3 className="font-serif font-semibold text-foreground mb-2">
+                  <Star className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 text-primary" />
+                  <h3 className="font-serif font-semibold text-foreground mb-2 text-base sm:text-lg">
                     Magic
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Professional quality for stunning performances
                   </p>
                 </CardContent>
               </Card>
-              <Card className="text-center p-6 bg-card border-border">
+              <Card className="text-center p-4 sm:p-6 bg-card border-border">
                 <CardContent className="p-0">
-                  <Package className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h3 className="font-serif font-semibold text-foreground mb-2">
+                  <Package className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 text-primary" />
+                  <h3 className="font-serif font-semibold text-foreground mb-2 text-base sm:text-lg">
                     Card Games
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Premium feel for your favorite games
                   </p>
                 </CardContent>

@@ -28,28 +28,31 @@ const features = [
 
 export default function WhySpecial() {
   return (
-    <section id="WhySpecial" className="py-24 bg-background text-foreground">
+    <section
+      id="WhySpecial"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background text-foreground"
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
             Why are these cards special?
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto"></div>
+          <div className="w-20 sm:w-24 h-1 bg-primary mx-auto"></div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="text-center bg-card border-border hover:border-primary hover:shadow-lg backdrop-blur-sm"
+              className="text-center bg-card border-border hover:border-primary hover:shadow-lg backdrop-blur-sm transition-all duration-300"
             >
-              <CardHeader className="pb-4">
-                <feature.icon className="w-16 h-16 mx-auto mb-6 text-primary" />
-                <CardTitle className="text-xl font-serif text-foreground">
+              <CardHeader className="pb-4 px-4 sm:px-6">
+                <feature.icon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-4 sm:mb-6 text-primary" />
+                <CardTitle className="text-lg sm:text-xl font-serif text-foreground">
                   {feature.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">
+              <CardContent className="px-4 sm:px-6">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
               </CardContent>
