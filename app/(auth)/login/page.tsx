@@ -7,6 +7,7 @@ import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
+
   const { data: session, isPending: sessionLoading } = useSession();
 
   const [isLogin, setIsLogin] = useState(true);
@@ -18,7 +19,7 @@ export default function LoginPage() {
 
   // Redirect if already logged in
   if (session && !sessionLoading) {
-    router.push("/dashboard");
+    router.push("");
     return null;
   }
 
@@ -38,7 +39,7 @@ export default function LoginPage() {
         if (error) {
           setError(error.message || "Login error");
         } else {
-          router.push("/dashboard");
+          router.push("");
         }
       } else {
         // Sign up
@@ -51,7 +52,7 @@ export default function LoginPage() {
         if (error) {
           setError(error.message || "Sign up error");
         } else {
-          router.push("/dashboard");
+          router.push("");
         }
       }
     } catch (err) {

@@ -6,13 +6,23 @@ import { motion } from "motion/react";
 
 import { Button } from "@/components/ui/button";
 
-export default function ModeToggle() {
+export default function ModeToggle({
+  variant = "Default",
+}: {
+  variant?: "Landing" | "Default";
+}) {
   const { setTheme, theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [transitionTheme, setTransitionTheme] = useState<"light" | "dark">(
     "dark"
   );
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Ensure component is mounted before rendering theme-dependent content
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleThemeToggle = useCallback(() => {
     if (isAnimating) return;
@@ -36,16 +46,24 @@ export default function ModeToggle() {
   const [isTop, setIsTop] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsTop(window.scrollY < 100);
-    };
+    console.log(variant);
+    if (variant === "Landing") {
+      const handleScroll = () => {
+        setIsTop(window.scrollY < 100);
+      };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, [variant]);
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return null;
+  }
 
   return (
-    !isTop && (
+    (variant === "Default" || !isTop) && (
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

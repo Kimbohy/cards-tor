@@ -10,23 +10,23 @@ import Advantages from "../components/sections/Advantages";
 import FAQ from "../components/sections/FAQ";
 import Newsletter from "../components/sections/Newsletter";
 import Footer from "../components/sections/Footer";
+import ThemTrigger from "@/components/Them-trigger";
 
 export default function Home() {
   return (
-    <div>
-      <main>
-        <Hero />
-        <WhySpecial />
-        <FeaturedDecks />
-        <Collections />
-        <Storytelling />
-        <Quality />
-        <SocialProof />
-        <Advantages />
-        <FAQ />
-        <Newsletter />
-      </main>
+    <div className="w-full">
+      <Hero />
+      <WhySpecial />
+      <FeaturedDecks />
+      <Collections />
+      <Storytelling />
+      <Quality />
+      <SocialProof />
+      <Advantages />
+      <FAQ />
+      <Newsletter />
       <Footer />
+      <ThemTrigger variant="Landing" />
     </div>
   );
 }

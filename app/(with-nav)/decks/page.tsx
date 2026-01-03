@@ -208,12 +208,9 @@ export default function DecksPage() {
                 30 * 24 * 60 * 60 * 1000; // Less than 30 days old
 
               return (
-                <Card
-                  key={deck.id}
-                  className="overflow-hidden bg-card border-border hover:border-primary hover:shadow-lg backdrop-blur-sm group transition-all duration-300"
-                >
-                  <div className="relative overflow-hidden">
-                    <Link href={`/decks/${deck.id}`}>
+                <Link href={`/decks/${deck.id}`} key={deck.id}>
+                  <Card className="overflow-hidden bg-card border-border hover:border-primary hover:shadow-lg backdrop-blur-sm group transition-all duration-300">
+                    <div className="relative overflow-hidden">
                       <Image
                         src={mainImage.url}
                         alt={mainImage.altText || deck.name}
@@ -221,35 +218,33 @@ export default function DecksPage() {
                         height={300}
                         className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                    </Link>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    {isNew && (
-                      <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground font-semibold px-3 py-1">
-                        New
-                      </Badge>
-                    )}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <p className="text-3xl font-serif font-light text-white">
-                        €{price.amount}
-                      </p>
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+                      {isNew && (
+                        <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground font-semibold px-3 py-1">
+                          New
+                        </Badge>
+                      )}
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <p className="text-3xl font-serif font-light text-white">
+                          €{price.amount}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <CardHeader className="pb-4">
-                    <CardTitle className="text-2xl font-serif text-foreground">
-                      {deck.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-6 leading-relaxed line-clamp-2">
-                      {deck.description}
-                    </p>
-                    <Link href={`/decks/${deck.id}`}>
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-2xl font-serif text-foreground">
+                        {deck.name}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground mb-6 leading-relaxed line-clamp-2">
+                        {deck.description}
+                      </p>
                       <Button className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-semibold py-3">
                         View Details
                       </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </Link>
               );
             })}
           </div>

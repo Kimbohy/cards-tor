@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Facebook, Instagram, Twitter, Crown } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 
 export default function Footer() {
@@ -13,7 +14,14 @@ export default function Footer() {
             alt="Crown"
             width={80}
             height={80}
-            className="mx-auto mb-4"
+            className="mx-auto mb-4 hidden dark:block"
+          />
+          <Image
+            src="/cards_dark.svg"
+            alt="Crown"
+            width={80}
+            height={80}
+            className="mx-auto mb-4 block dark:hidden"
           />
           <h3 className="font-serif text-3xl font-light text-primary mb-2">
             Cards-Tor

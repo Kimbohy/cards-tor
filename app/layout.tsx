@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ThemeProvider } from "@/components/theme-provider";
-import ThemTrigger from "@/components/Them-trigger";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,8 +35,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NuqsAdapter>{children}</NuqsAdapter>
-          <ThemTrigger />
+          <NuqsAdapter>
+            <main className="p-7 w-screen">{children}</main>
+          </NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>
