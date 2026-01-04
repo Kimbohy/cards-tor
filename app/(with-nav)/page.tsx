@@ -9,11 +9,10 @@ import Advantages from "@/components/home/Advantages";
 import FAQ from "@/components/home/FAQ";
 import Newsletter from "@/components/home/Newsletter";
 import Footer from "@/components/home/Footer";
-import ThemTrigger from "@/components/Them-trigger";
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <>
       <Hero />
       <WhySpecial />
       <FeaturedDecks />
@@ -24,7 +23,6 @@ export default function Home() {
       <FAQ />
       <Newsletter />
       <Footer />
-      <ThemTrigger variant="Landing" />
-    </div>
+    </>
   );
 }

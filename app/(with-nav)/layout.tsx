@@ -4,7 +4,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Nav />
-      {children}
+      <main className="[&>*:first-child]:pt-24">{children}</main>
       <ThemTrigger />
     </>
   );

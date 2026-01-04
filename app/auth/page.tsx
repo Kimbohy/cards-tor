@@ -85,7 +85,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background via-background to-muted/20 px-4 py-8">
+    <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-background via-background to-muted/20 px-4 py-8">
       <div className="w-full max-w-md">
         <Card className="border-border/50 shadow-2xl">
           <CardHeader className="space-y-1 text-center">

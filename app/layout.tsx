@@ -36,9 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
           enableColorScheme
         >
-          <NuqsAdapter>
-            <main>{children}</main>
-          </NuqsAdapter>
+          <NuqsAdapter>{children}</NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>

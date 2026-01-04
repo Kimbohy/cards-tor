@@ -1,16 +1,13 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+import { DrawnIcon } from "@/components/DrawnIcon";
 
-export default function ModeToggle({
-  variant = "Default",
-}: {
-  variant?: "Landing" | "Default";
-}) {
+export default function ModeToggle({}: {}) {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -18,6 +15,9 @@ export default function ModeToggle({
     "dark"
   );
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const pathname = usePathname();
+  const isLanding = pathname === "/" || pathname === "";
 
   // Ensure component is mounted before rendering theme-dependent content
   useEffect(() => {
@@ -46,8 +46,7 @@ export default function ModeToggle({
   const [isTop, setIsTop] = useState(true);
 
   useEffect(() => {
-    console.log(variant);
-    if (variant === "Landing") {
+    if (isLanding) {
       const handleScroll = () => {
         setIsTop(window.scrollY < 100);
       };
@@ -55,7 +54,7 @@ export default function ModeToggle({
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
     }
-  }, [variant]);
+  }, [isLanding]);
 
   // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
@@ -63,33 +62,35 @@ export default function ModeToggle({
   }
 
   return (
-    (variant === "Default" || !isTop) && (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <Button
-          ref={buttonRef}
-          variant="ghost"
-          size="icon"
-          onClick={handleThemeToggle}
-          className="fixed bottom-6 right-6 h-16 w-16 rounded-full z-50"
-          aria-label="Toggle dark mode"
+    <AnimatePresence>
+      {(!isLanding || !isTop) && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.3 } }}
+          transition={{ duration: 0.3 }}
         >
-          {theme === "dark" ? (
-            <Sun className="w-8 h-8" />
-          ) : (
-            <Moon className="w-8 h-8" />
-          )}
-        </Button>
-        <ThemSwitchTransition
-          isAnimating={isAnimating}
-          targetTheme={transitionTheme}
-          buttonRef={buttonRef}
-        />
-      </motion.div>
-    )
+          <Button
+            ref={buttonRef}
+            variant="ghost"
+            onClick={handleThemeToggle}
+            className="fixed bottom-6 right-6 h-16 w-16 rounded-full z-50 shadow-lg text-primary bg-primary-foreground"
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? (
+              <DrawnIcon type="sun" size={32} />
+            ) : (
+              <DrawnIcon type="moon" size={32} />
+            )}
+          </Button>
+          <ThemSwitchTransition
+            isAnimating={isAnimating}
+            targetTheme={transitionTheme}
+            buttonRef={buttonRef}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
