@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { Facebook, Instagram, Twitter, Crown } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -120,6 +121,12 @@ export default function Footer() {
             order something, you won't receive it).
           </p>
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 md:space-x-8 text-center">
+            <Link
+              href="/admin"
+              className="over:text-primary transition-colors duration-300 font-light"
+            >
+              Admin
+            </Link>
             <a
               href="#"
               className="hover:text-primary transition-colors duration-300 font-light"
