@@ -11,7 +11,7 @@ function DeckCard({ deck }: { deck: any }) {
     new Date().getTime() - deck.createdAt.getTime() < 30 * 24 * 60 * 60 * 1000;
   return (
     <Link href={`/decks/${deck.id}`}>
-      <Card className="overflow-hidden bg-card border-border hover:border-primary hover:shadow-lg backdrop-blur-sm group transition-all duration-300">
+      <Card className="overflow-hidden bg-card border-border hover:border-accent hover:shadow-lg backdrop-blur-sm group transition-all duration-300">
         <div className="relative overflow-hidden">
           <Image
             src={mainImage.url}

@@ -41,10 +41,10 @@ export default function FAQ() {
     >
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
             Frequently Asked Questions
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-primary mx-auto"></div>
+          <div className="w-20 sm:w-24 h-1 bg-accent mx-auto"></div>
         </div>
         <Accordion
           type="single"
@@ -55,9 +55,9 @@ export default function FAQ() {
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className="bg-card border border-border rounded-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 hover:border-primary backdrop-blur-sm transition-colors"
+              className="bg-card border border-border rounded-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 hover:border-accent backdrop-blur-sm transition-colors"
             >
-              <AccordionTrigger className="text-left text-base sm:text-lg font-serif text-foreground hover:text-primary transition-colors duration-300 hover:no-underline">
+              <AccordionTrigger className="text-left text-base sm:text-lg font-serif text-foreground hover:text-accent transition-colors duration-300 hover:no-underline">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed pt-3 sm:pt-4 text-sm sm:text-base md:text-lg">

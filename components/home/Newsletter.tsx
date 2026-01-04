@@ -12,9 +12,9 @@ export default function Newsletter() {
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="mb-6 sm:mb-8">
-            <Sparkles className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-4 sm:mb-6 text-primary" />
+            <Sparkles className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-4 sm:mb-6 text-accent" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 sm:mb-6 text-primary">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 sm:mb-6 text-foreground">
             Join the Elite
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 md:mb-12 leading-relaxed max-w-2xl mx-auto font-light px-4">

@@ -187,7 +187,7 @@ export default function DecksPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-light mb-4 sm:mb-6 text-primary">
               Premium Playing Card Decks
             </h1>
-            <div className="w-20 sm:w-24 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
+            <div className="w-20 sm:w-24 h-1 bg-accent mx-auto mb-4 sm:mb-6"></div>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Explore our collection of premium playing cards designed for
               cardistry, magic, and card games. Each deck is carefully selected

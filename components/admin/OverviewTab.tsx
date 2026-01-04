@@ -10,28 +10,28 @@ const stats = [
     value: "1,234",
     change: "+12%",
     icon: Users,
-    color: "text-blue-600",
+    color: "text-accent",
   },
   {
     title: "Total Decks",
     value: "456",
     change: "+8%",
     icon: Package,
-    color: "text-green-600",
+    color: "text-accent",
   },
   {
     title: "Total Revenue",
     value: "$12,345",
     change: "+23%",
     icon: DollarSign,
-    color: "text-purple-600",
+    color: "text-accent",
   },
   {
     title: "Active Orders",
     value: "89",
     change: "+5%",
     icon: ShoppingCart,
-    color: "text-orange-600",
+    color: "text-accent",
   },
 ];
 

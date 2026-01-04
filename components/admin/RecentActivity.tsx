@@ -50,8 +50,8 @@ export function RecentActivity() {
                 key={i}
                 className="flex items-start gap-3 pb-3 border-b last:border-0"
               >
-                <div className="bg-primary/10 rounded-full p-2">
-                  <div className="size-2 rounded-full bg-primary" />
+                <div className="bg-accent/10 rounded-full p-2">
+                  <div className="size-2 rounded-full bg-accent" />
                 </div>
                 <div className="flex-1 space-y-1">
                   <p className="text-sm font-medium">{activity.action}</p>

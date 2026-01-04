@@ -27,8 +27,8 @@ export function StatsCard({
       <CardContent>
         <div className="text-2xl font-bold">{value}</div>
         <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
-          <TrendingUp className="size-3 text-green-600" />
-          <span className="text-green-600">{change}</span>
+          <TrendingUp className="size-3 text-accent" />
+          <span className="text-accent">{change}</span>
           <span>from last month</span>
         </div>
       </CardContent>

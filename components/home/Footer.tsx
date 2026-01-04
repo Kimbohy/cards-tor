@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <Image
-            src="/cards.svg"
+            src="/cards_primary.svg"
             alt="Crown"
             width={80}
             height={80}
@@ -40,7 +40,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-primary transition-colors duration-300 font-light"
+                  className="hover:text-accent transition-colors duration-300 font-light"
                 >
                   Luxury Decks
                 </a>
@@ -48,7 +48,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-primary transition-colors duration-300 font-light"
+                  className="hover:text-accent transition-colors duration-300 font-light"
                 >
                   Limited Editions
                 </a>
@@ -56,7 +56,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-primary transition-colors duration-300 font-light"
+                  className="hover:text-accent transition-colors duration-300 font-light"
                 >
                   Accessories
                 </a>
@@ -71,7 +71,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-primary transition-colors duration-300 font-light"
+                  className="hover:text-accent transition-colors duration-300 font-light"
                 >
                   Contact
                 </a>
@@ -79,7 +79,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-primary transition-colors duration-300 font-light"
+                  className="hover:text-accent transition-colors duration-300 font-light"
                 >
                   Delivery
                 </a>
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="hover:text-primary transition-colors duration-300 font-light"
+                  className="hover:text-accent transition-colors duration-300 font-light"
                 >
                   Returns
                 </a>
@@ -99,9 +99,9 @@ export default function Footer() {
               Follow Us
             </h4>
             <div className="flex justify-center md:justify-start space-x-4 sm:space-x-6">
-              <Facebook className="w-5 h-5 sm:w-6 sm:h-6 hover:text-primary cursor-pointer transition-colors duration-300" />
-              <Instagram className="w-5 h-5 sm:w-6 sm:h-6 hover:text-primary cursor-pointer transition-colors duration-300" />
-              <Twitter className="w-5 h-5 sm:w-6 sm:h-6 hover:text-primary cursor-pointer transition-colors duration-300" />
+              <Facebook className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground hover:text-accent cursor-pointer transition-colors duration-300" />
+              <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground hover:text-accent cursor-pointer transition-colors duration-300" />
+              <Twitter className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground hover:text-accent cursor-pointer transition-colors duration-300" />
             </div>
           </div>
           <div className="text-center md:text-left">
@@ -123,19 +123,19 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 md:space-x-8 text-center">
             <Link
               href="/admin"
-              className="over:text-primary transition-colors duration-300 font-light"
+              className="hover:text-accent transition-colors duration-300 font-light"
             >
               Admin
             </Link>
             <a
               href="#"
-              className="hover:text-primary transition-colors duration-300 font-light"
+              className="hover:text-accent transition-colors duration-300 font-light"
             >
               Legal Notice
             </a>
             <a
               href="#"
-              className="hover:text-primary transition-colors duration-300 font-light"
+              className="hover:text-accent transition-colors duration-300 font-light"
             >
               Privacy Policy
             </a>

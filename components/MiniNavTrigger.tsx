@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { DrawnIcon } from "@/components/DrawnIcon";
+import Image from "next/image";
 
 interface MiniNavTriggerProps {
   session: any;
@@ -47,7 +48,7 @@ export function MiniNavTrigger({
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
-                className="h-16 w-16 rounded-full shadow-lg bg-primary-foreground text-primary"
+                className="h-16 w-16 rounded-full shadow-lg bg-primary-foreground text-primary dark:hover:bg-accent"
               >
                 <DrawnIcon type="menu" size={32} />
               </Button>
@@ -55,7 +56,20 @@ export function MiniNavTrigger({
             <SheetContent>
               <SheetHeader>
                 <SheetTitle className="text-primary font-serif text-2xl">
-                  Menu
+                  <Image
+                    src="/fullLogo.svg"
+                    alt="Logo"
+                    width={210}
+                    height={60}
+                    className="w-48 h-auto hidden dark:block"
+                  />
+                  <Image
+                    src="/fullLogo-dark.svg"
+                    alt="Logo"
+                    width={210}
+                    height={60}
+                    className="w-48 h-auto block dark:hidden"
+                  />
                 </SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-6 mt-8 mx-3">
@@ -63,14 +77,14 @@ export function MiniNavTrigger({
                   <Link
                     key={href}
                     href={href}
-                    className="text-xl font-serif hover:text-primary transition-colors"
+                    className="text-xl font-serif hover:text-accent transition-colors"
                   >
                     {label}
                   </Link>
                 ))}
                 {session ? (
                   <div className="flex items-center gap-3 p-3 border border-border rounded-lg">
-                    <div className="h-8 w-8 border border-primary rounded-full" />
+                    <div className="h-8 w-8 border border-accent rounded-full" />
                     <span className="text-lg font-serif">
                       {session.user.name}
                     </span>
@@ -79,13 +93,13 @@ export function MiniNavTrigger({
                   <>
                     <Link
                       href={registerHref}
-                      className="text-xl font-serif hover:text-primary transition-colors"
+                      className="text-xl font-serif hover:text-accent transition-colors"
                     >
                       {navConfig.auth.register.label}
                     </Link>
                     <Link
                       href={signInHref}
-                      className="text-xl font-serif hover:text-primary transition-colors"
+                      className="text-xl font-serif hover:text-accent transition-colors"
                     >
                       {navConfig.auth.signIn.label}
                     </Link>

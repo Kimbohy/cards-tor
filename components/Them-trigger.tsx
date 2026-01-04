@@ -74,7 +74,7 @@ export default function ModeToggle({}: {}) {
             ref={buttonRef}
             variant="ghost"
             onClick={handleThemeToggle}
-            className="fixed bottom-6 right-6 h-16 w-16 rounded-full z-50 shadow-lg text-primary bg-primary-foreground"
+            className="fixed bottom-6 right-6 h-16 w-16 rounded-full z-50 shadow-lg text-primary bg-primary-foreground dark:hover:bg-accent"
             aria-label="Toggle dark mode"
           >
             {theme === "dark" ? (
@@ -150,7 +150,7 @@ function ThemSwitchTransition({
           marginLeft: -maxRadius,
           marginTop: -maxRadius,
           borderRadius: "50%",
-          backgroundColor: targetTheme === "dark" ? "#0a0a0a" : "#fafafa",
+          backgroundColor: targetTheme === "dark" ? "#2a2a2f" : "#f7f6f4",
           transform: "scale(0)",
           animation: "theme-expand 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards",
         }}

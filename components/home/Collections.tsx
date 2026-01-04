@@ -33,20 +33,20 @@ export default function Collections() {
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 text-primary">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
             Exceptional Collections
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-primary mx-auto"></div>
+          <div className="w-20 sm:w-24 h-1 bg-accent mx-auto"></div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {categories.map((category, index) => (
             <Card
               key={index}
-              className="text-center bg-card border-border hover:border-primary  backdrop-blur-sm transition-all duration-300  cursor-pointer group"
+              className="text-center bg-card border-border hover:border-accent backdrop-blur-sm transition-all duration-300 cursor-pointer group"
             >
               <CardHeader className="pb-4 px-4 sm:px-6">
-                <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-muted/80 transition-colors">
-                  <category.icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-primary" />
+                <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-accent/10 transition-colors">
+                  <category.icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-accent" />
                 </div>
                 <CardTitle className="text-lg sm:text-xl font-serif text-foreground">
                   {category.title}

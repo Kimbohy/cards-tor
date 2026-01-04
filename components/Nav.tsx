@@ -61,11 +61,10 @@ const NAV_CONFIG = {
 };
 
 const Nav = () => {
-  const { data: session } = useSession();
+  const { data: session, isPending: sessionLoading } = useSession();
   const pathname = usePathname();
-  const isLanding = pathname === "/" || pathname === "";
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const isLanding = pathname === "/" || pathname === "";
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > NAV_CONFIG.miniNavTrigger.scrollThreshold);
@@ -88,12 +87,7 @@ const Nav = () => {
       />
 
       {/* Main Navigation */}
-      <nav
-        className={cn(
-          "flex justify-between items-center w-full z-50 absolute top-0 left-0 p-9 pb-0",
-          !isLanding && "text-primary"
-        )}
-      >
+      <nav className="flex justify-between items-center w-full z-50 absolute top-0 left-0 p-9 pb-0">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -101,20 +95,15 @@ const Nav = () => {
             alt={NAV_CONFIG.logo.alt}
             width={NAV_CONFIG.logo.width}
             height={NAV_CONFIG.logo.height}
-            className={cn(
-              "w-32 sm:w-40 md:w-48 lg:w-52 h-auto",
-              !isLanding ? "hidden dark:block" : ""
-            )}
+            className="w-32 sm:w-40 md:w-48 lg:w-52 h-auto hidden dark:block text-secondary-foreground"
           />
-          {!isLanding && (
-            <Image
-              src={NAV_CONFIG.logo.dark}
-              alt={NAV_CONFIG.logo.alt}
-              width={NAV_CONFIG.logo.width}
-              height={NAV_CONFIG.logo.height}
-              className="w-32 sm:w-40 md:w-48 lg:w-52 h-auto block dark:hidden"
-            />
-          )}
+          <Image
+            src={NAV_CONFIG.logo.dark}
+            alt={NAV_CONFIG.logo.alt}
+            width={NAV_CONFIG.logo.width}
+            height={NAV_CONFIG.logo.height}
+            className="w-32 sm:w-40 md:w-48 lg:w-52 h-auto block dark:hidden text-secondary-foreground"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -123,33 +112,25 @@ const Nav = () => {
             <Icon
               key={label}
               size={28}
-              className={cn(
-                "text-primary cursor-pointer hover:opacity-80 transition-opacity",
-                isLanding && "text-white"
-              )}
+              className="text-secondary-foreground cursor-pointer hover:opacity-80 transition-opacity"
             />
           ))}
           {NAV_CONFIG.links.map(({ label, href }) => (
             <Link
               key={href}
               href={href}
-              className={cn(
-                "text-2xl xl:text-3xl hover:opacity-80 transition-opacity",
-                isLanding && "text-white"
-              )}
+              className="text-2xl xl:text-3xl hover:opacity-80 transition-opacity text-secondary-foreground"
             >
               {label}
             </Link>
           ))}
-          {session ? (
+          {sessionLoading ? (
+            // spinner placeholder while loading
+            <div className="w-7 h-7 border-4 border-secondary-foreground border-t-transparent border-solid rounded-full animate-spin" />
+          ) : session ? (
             <div className="border-2 rounded-xl px-3 py-1 bg-white/10 flex items-center gap-2">
               <div className="h-7 w-7 border border-amber-50 rounded-full" />
-              <span
-                className={cn(
-                  "text-2xl xl:text-3xl text-primary",
-                  isLanding && "text-white"
-                )}
-              >
+              <span className="text-2xl xl:text-3xl text-secondary-foreground">
                 {session.user.name}
               </span>
             </div>
@@ -157,19 +138,13 @@ const Nav = () => {
             <>
               <Link
                 href={registerHref}
-                className={cn(
-                  "text-2xl xl:text-3xl hover:opacity-80 transition-opacity",
-                  isLanding && "text-white"
-                )}
+                className="text-2xl xl:text-3xl hover:opacity-80 transition-opacity"
               >
                 {NAV_CONFIG.auth.register.label}
               </Link>
               <Link
                 href={signInHref}
-                className={cn(
-                  "text-2xl xl:text-3xl hover:opacity-80 transition-opacity",
-                  isLanding && "text-white"
-                )}
+                className="text-2xl xl:text-3xl hover:opacity-80 transition-opacity"
               >
                 {NAV_CONFIG.auth.signIn.label}
               </Link>
@@ -183,10 +158,7 @@ const Nav = () => {
             <Icon
               key={label}
               size={24}
-              className={cn(
-                "text-primary cursor-pointer",
-                isLanding && "text-white"
-              )}
+              className="text-primary cursor-pointer"
             />
           ))}
           <MobileMenu
@@ -234,27 +206,27 @@ function MobileMenu({
             <Link
               key={href}
               href={href}
-              className="text-xl font-serif hover:text-primary transition-colors"
+              className="text-xl font-serif hover:text-accent transition-colors"
             >
               {label}
             </Link>
           ))}
           {session ? (
             <div className="flex items-center gap-3 p-3 border border-border rounded-lg">
-              <div className="h-8 w-8 border border-primary rounded-full" />
+              <div className="h-8 w-8 border border-accent rounded-full" />
               <span className="text-lg font-serif">{session.user.name}</span>
             </div>
           ) : (
             <>
               <Link
                 href={registerHref}
-                className="text-xl font-serif hover:text-primary transition-colors"
+                className="text-xl font-serif hover:text-accent transition-colors"
               >
                 {NAV_CONFIG.auth.register.label}
               </Link>
               <Link
                 href={signInHref}
-                className="text-xl font-serif hover:text-primary transition-colors"
+                className="text-xl font-serif hover:text-accent transition-colors"
               >
                 {NAV_CONFIG.auth.signIn.label}
               </Link>

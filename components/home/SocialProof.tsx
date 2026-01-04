@@ -36,7 +36,7 @@ export default function SocialProof() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-light mb-4 text-foreground">
             Exceptional Testimonials
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-primary mx-auto"></div>
+          <div className="w-20 sm:w-24 h-1 bg-accent mx-auto"></div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
           {testimonials.map((testimonial, index) => (
@@ -50,7 +50,7 @@ export default function SocialProof() {
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 sm:w-6 sm:h-6 fill-primary text-primary"
+                      className="w-5 h-5 sm:w-6 sm:h-6 fill-accent text-accent"
                     />
                   ))}
                 </div>
@@ -61,7 +61,7 @@ export default function SocialProof() {
                   <p className="font-serif font-semibold text-foreground text-base sm:text-lg">
                     {testimonial.name}
                   </p>
-                  <p className="text-xs sm:text-sm text-primary font-medium">
+                  <p className="text-xs sm:text-sm text-accent font-medium">
                     {testimonial.role}
                   </p>
                 </div>
