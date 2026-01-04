@@ -115,7 +115,9 @@ export default function Footer() {
         <Separator className="bg-border mb-6 sm:mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center text-muted-foreground text-xs sm:text-sm gap-4 md:gap-0">
           <p className="font-light text-center md:text-left">
-            &copy; 2025 Cards-Tor. All rights reserved.
+            &copy; 2025 Cards-Tor. All rights reserved. <br />
+            This is just an personal project for learning purposes. (Even if you
+            order something, you won't receive it).
           </p>
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 md:space-x-8 text-center">
             <a

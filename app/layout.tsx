@@ -34,9 +34,10 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          enableColorScheme
         >
           <NuqsAdapter>
-            <main className="p-7 w-screen">{children}</main>
+            <main className="w-screen">{children}</main>
           </NuqsAdapter>
         </ThemeProvider>
       </body>

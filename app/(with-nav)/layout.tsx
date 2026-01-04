@@ -1,5 +1,5 @@
 import ThemTrigger from "@/components/Them-trigger";
-import Nav from "../../components/hero/Nav";
+import Nav from "../../components/Nav";
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>

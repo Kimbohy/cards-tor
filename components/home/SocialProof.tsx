@@ -42,7 +42,7 @@ export default function SocialProof() {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="p-4 sm:p-6 md:p-8 bg-card backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="p-4 sm:p-6 md:p-8 bg-card backdrop-blur-sm border-border shadow-lg hover:shadow-xl transition-all duration-300 "
             >
               <CardContent className="p-0 relative">
                 <Quote className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-muted-foreground/30 absolute top-0 right-0" />

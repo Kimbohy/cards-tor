@@ -42,7 +42,7 @@ export default function Collections() {
           {categories.map((category, index) => (
             <Card
               key={index}
-              className="text-center bg-card border-border hover:border-primary hover:shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 cursor-pointer group"
+              className="text-center bg-card border-border hover:border-primary  backdrop-blur-sm transition-all duration-300  cursor-pointer group"
             >
               <CardHeader className="pb-4 px-4 sm:px-6">
                 <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-muted/80 transition-colors">

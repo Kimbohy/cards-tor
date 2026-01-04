@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Search, ShoppingCart, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Sheet,
   SheetContent,
@@ -13,13 +14,15 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
-const Nav = ({ variant }: { variant?: "Landing" | "Default" }) => {
+const Nav = () => {
   const { data: session } = useSession();
+  const pathname = usePathname();
+  const isLanding = pathname === "/";
   return (
     <div
       className={cn(
-        "flex justify-between items-center w-full",
-        variant === "Landing" ? "" : "text-primary"
+        "flex justify-between items-center w-full z-50 absolute p-9",
+        !isLanding && "text-primary"
       )}
     >
       {/* Logo */}
@@ -31,10 +34,10 @@ const Nav = ({ variant }: { variant?: "Landing" | "Default" }) => {
           height={210}
           className={cn(
             "w-32 sm:w-40 md:w-48 lg:w-52 h-auto",
-            variant === "Landing" ? "" : "hidden dark:block"
+            !isLanding ? "hidden dark:block" : ""
           )}
         />
-        {variant !== "Landing" && (
+        {!isLanding && (
           <Image
             src="/fullLogo-dark.svg"
             alt="Logo"
@@ -49,34 +52,56 @@ const Nav = ({ variant }: { variant?: "Landing" | "Default" }) => {
       <div className="hidden lg:flex gap-8 xl:gap-20 items-center">
         <Search
           size={28}
-          className="text-primary cursor-pointer hover:opacity-80 transition-opacity"
+          className={cn(
+            "text-primary cursor-pointer hover:opacity-80 transition-opacity",
+            isLanding && "text-white"
+          )}
         />
         <ShoppingCart
           size={28}
-          className="text-primary cursor-pointer hover:opacity-80 transition-opacity"
+          className={cn(
+            "text-primary cursor-pointer hover:opacity-80 transition-opacity",
+            isLanding && "text-white"
+          )}
         />
         <Link
           href="/decks"
-          className="text-2xl xl:text-3xl hover:opacity-80 transition-opacity"
+          className={cn(
+            "text-2xl xl:text-3xl hover:opacity-80 transition-opacity",
+            isLanding && "text-white"
+          )}
         >
           Decks
         </Link>
         {session ? (
           <div className="border-2 rounded-xl px-3 py-1 bg-white/10 flex items-center gap-2">
             <div className="h-7 w-7 border border-amber-50 rounded-full" />
-            <span className="text-2xl xl:text-3xl">{session.user.name}</span>
+            <span
+              className={cn(
+                "text-2xl xl:text-3xl text-primary",
+                isLanding && "text-white"
+              )}
+            >
+              {session.user.name}
+            </span>
           </div>
         ) : (
           <>
             <Link
               href="/login"
-              className="text-2xl xl:text-3xl hover:opacity-80 transition-opacity"
+              className={cn(
+                "text-2xl xl:text-3xl hover:opacity-80 transition-opacity",
+                isLanding && "text-white"
+              )}
             >
               Register
             </Link>
             <Link
               href="/login"
-              className="text-2xl xl:text-3xl hover:opacity-80 transition-opacity"
+              className={cn(
+                "text-2xl xl:text-3xl hover:opacity-80 transition-opacity",
+                isLanding && "text-white"
+              )}
             >
               Sign In
             </Link>
@@ -86,13 +111,26 @@ const Nav = ({ variant }: { variant?: "Landing" | "Default" }) => {
 
       {/* Mobile Navigation */}
       <div className="flex lg:hidden items-center gap-3 sm:gap-4">
-        <Search size={24} className="text-primary cursor-pointer" />
-        <ShoppingCart size={24} className="text-primary cursor-pointer" />
+        <Search
+          size={24}
+          className={cn(
+            "text-primary cursor-pointer",
+            isLanding && "text-white"
+          )}
+        />
+        <ShoppingCart
+          size={24}
+          className={cn(
+            "text-primary cursor-pointer",
+            isLanding && "text-white"
+          )}
+        />
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="text-primary">
-              <Menu size={28} />
-            </Button>
+            <Menu
+              size={24}
+              className={cn("text-primary", isLanding && "text-white")}
+            />
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
@@ -100,7 +138,7 @@ const Nav = ({ variant }: { variant?: "Landing" | "Default" }) => {
                 Menu
               </SheetTitle>
             </SheetHeader>
-            <div className="flex flex-col gap-6 mt-8">
+            <div className="flex flex-col gap-6 mt-8 mx-3">
               <Link
                 href="/decks"
                 className="text-xl font-serif hover:text-primary transition-colors"
