@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-background text-foreground py-8 sm:py-12 md:py-16 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/icon/images/pattern.png')] opacity-5"></div>
+      <div className="absolute inset-0 opacity-5"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <Image

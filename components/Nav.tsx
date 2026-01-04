@@ -12,12 +12,22 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+import { createSerializer, parseAsBoolean } from "nuqs";
+
+const serializeAuthParams = createSerializer({
+  login: parseAsBoolean,
+});
 
 const Nav = () => {
   const { data: session } = useSession();
   const pathname = usePathname();
-  const isLanding = pathname === "/";
+  const isLanding = pathname === "/" || pathname === "";
+
+  // create a serialized href for auth links (doc in: https://nuqs.dev/docs/utilities#serializer-helper)
+  // We can just use "/auth?login=false" but because we want to learn nuqs, we use the serializer
+  const registerHref = serializeAuthParams("/auth", { login: false });
+  const signInHref = "/auth";
+  console.log(registerHref);
   return (
     <div
       className={cn(
@@ -88,7 +98,7 @@ const Nav = () => {
         ) : (
           <>
             <Link
-              href="/login"
+              href={registerHref}
               className={cn(
                 "text-2xl xl:text-3xl hover:opacity-80 transition-opacity",
                 isLanding && "text-white"
@@ -97,7 +107,7 @@ const Nav = () => {
               Register
             </Link>
             <Link
-              href="/login"
+              href={signInHref}
               className={cn(
                 "text-2xl xl:text-3xl hover:opacity-80 transition-opacity",
                 isLanding && "text-white"
@@ -155,13 +165,13 @@ const Nav = () => {
               ) : (
                 <>
                   <Link
-                    href="/login"
+                    href={registerHref}
                     className="text-xl font-serif hover:text-primary transition-colors"
                   >
                     Register
                   </Link>
                   <Link
-                    href="/login"
+                    href={signInHref}
                     className="text-xl font-serif hover:text-primary transition-colors"
                   >
                     Sign In

@@ -6,7 +6,7 @@ export default function Storytelling() {
       id="Storytelling"
       className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background text-foreground relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[url('/icon/images/pattern.png')] opacity-5"></div>
+      <div className="absolute inset-0 opacity-5"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           <div className="space-y-4 sm:space-y-6 md:space-y-8">

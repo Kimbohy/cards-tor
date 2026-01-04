@@ -37,7 +37,7 @@ export default function RootLayout({
           enableColorScheme
         >
           <NuqsAdapter>
-            <main className="w-screen">{children}</main>
+            <main>{children}</main>
           </NuqsAdapter>
         </ThemeProvider>
       </body>

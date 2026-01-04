@@ -8,7 +8,7 @@ export default function Newsletter() {
       id="Newsletter"
       className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background text-foreground relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[url('/icon/images/pattern.png')] opacity-5"></div>
+      <div className="absolute inset-0  opacity-5"></div>
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="mb-6 sm:mb-8">
