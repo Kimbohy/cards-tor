@@ -40,8 +40,8 @@ function Page() {
         </Tabs>
       </main>
       <footer className="flex items-end justify-start p-3">
-        <span className="text-primary font-light">
-          *because this is a demo and training sit, everyone can access the
+        <span className="text-secondary-foreground font-light">
+          *because this is a demo and training project, everyone can access the
           admin panel. But you will not be able to make any changes, sorry!
         </span>
       </footer>

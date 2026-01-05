@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export default function Storytelling() {
   return (
@@ -40,14 +41,16 @@ export default function Storytelling() {
             </div>
           </div>
           <div className="relative mt-8 lg:mt-0">
-            <div className="absolute -inset-4 bg-linear-to-r from-accent/20 to-transparent rounded-lg blur-xl"></div>
-            <Image
-              src="/images/sven-ciupka-8H3cWNtBpdQ-unsplash.jpg"
-              alt="Our story"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-lg relative z-10 border border-border w-full h-auto"
-            />
+            <div className="absolute -inset-4 bg-linear-to-r from-accent/20 to-transparent rounded-lg blur-xl" />
+            <AspectRatio ratio={1 / 1}>
+              <Image
+                src="/images/sven-ciupka-8H3cWNtBpdQ-unsplash.jpg"
+                alt="Our story"
+                className="rounded-lg shadow-lg relative z-10 border object-cover border-border w-full h-full"
+                width={600}
+                height={400}
+              />
+            </AspectRatio>
           </div>
         </div>
       </div>

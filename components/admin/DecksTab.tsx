@@ -36,6 +36,30 @@ import {
   Image as ImageIcon,
   DollarSign,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { ButtonGroup } from "../ui/button-group";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Separator } from "../ui/separator";
+import { MultipleInput } from "../ui/MultipleInput";
+import AddDeckDialog from "./AddDeckDialog";
 
 const mockDecks = [
   {
@@ -43,7 +67,7 @@ const mockDecks = [
     name: "Premium Playing Cards",
     description: "Luxury poker cards with gold foil",
     images: 5,
-    prices: 2,
+    price: 25,
     keyFeatures: 3,
     createdAt: "2024-01-10",
   },
@@ -52,7 +76,7 @@ const mockDecks = [
     name: "Tarot Deck Deluxe",
     description: "Hand-illustrated tarot cards",
     images: 3,
-    prices: 1,
+    price: 15,
     keyFeatures: 4,
     createdAt: "2024-02-15",
   },
@@ -61,10 +85,20 @@ const mockDecks = [
     name: "Custom Game Cards",
     description: "Design your own game",
     images: 8,
-    prices: 3,
+    price: 37,
     keyFeatures: 5,
     createdAt: "2024-03-20",
   },
+];
+
+const keyFeaturesTypes = [
+  "QUALITY",
+  "DESIGN",
+  "USABILITY",
+  "DURABILITY",
+  "UNIQUENESS",
+  "PRODUCTION",
+  "PRICE",
 ];
 
 export function DecksTab() {
@@ -77,10 +111,8 @@ export function DecksTab() {
               <CardTitle>Decks Management</CardTitle>
               <CardDescription>Manage your card deck products</CardDescription>
             </div>
-            <Button>
-              <Plus className="mr-2 size-4" />
-              Add Deck
-            </Button>
+            {/* add deck button */}
+            <AddDeckDialog />
           </div>
         </CardHeader>
         <CardContent>
@@ -104,7 +136,7 @@ export function DecksTab() {
                     <TableHead>Name</TableHead>
                     <TableHead>Description</TableHead>
                     <TableHead className="text-center">Images</TableHead>
-                    <TableHead className="text-center">Prices</TableHead>
+                    <TableHead className="text-center">price</TableHead>
                     <TableHead className="text-center">Features</TableHead>
                     <TableHead>Created</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
@@ -121,7 +153,7 @@ export function DecksTab() {
                         <Badge variant="secondary">{deck.images}</Badge>
                       </TableCell>
                       <TableCell className="text-center">
-                        <Badge variant="secondary">{deck.prices}</Badge>
+                        <Badge variant="secondary">{deck.price}</Badge>
                       </TableCell>
                       <TableCell className="text-center">
                         <Badge variant="secondary">{deck.keyFeatures}</Badge>

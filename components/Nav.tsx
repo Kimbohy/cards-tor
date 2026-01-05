@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sheet";
 import { createSerializer, parseAsBoolean } from "nuqs";
 import { MiniNavTrigger } from "./MiniNavTrigger";
+import { Spinner } from "./ui/spinner";
 
 const serializeAuthParams = createSerializer({
   login: parseAsBoolean,
@@ -126,7 +127,7 @@ const Nav = () => {
           ))}
           {sessionLoading ? (
             // spinner placeholder while loading
-            <div className="w-7 h-7 border-4 border-secondary-foreground border-t-transparent border-solid rounded-full animate-spin" />
+            <Spinner className="size-8 text-secondary-foreground" />
           ) : session ? (
             <div className="border-2 rounded-xl px-3 py-1 bg-white/10 flex items-center gap-2">
               <div className="h-7 w-7 border border-amber-50 rounded-full" />
