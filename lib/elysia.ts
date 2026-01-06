@@ -32,4 +32,4 @@ export const app = new Elysia({ prefix: "/api" })
   .use(decksApi);
 
 // Export du type pour Eden (type-safety côté client)
-export type App = typeof app;
+// export type App = typeof app;

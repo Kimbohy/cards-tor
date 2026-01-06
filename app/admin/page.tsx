@@ -7,8 +7,6 @@ import {
   OverviewTab,
   UsersTab,
   DecksTab,
-  FeaturesTab,
-  MediaTab,
 } from "@/components/admin";
 
 function Page() {
@@ -24,19 +22,15 @@ function Page() {
           onValueChange={setSelectedTab}
           className="space-y-6"
         >
-          <TabsList className="grid w-full grid-cols-5 lg:w-auto">
+          <TabsList className="grid w-full grid-cols-3 lg:w-auto lg:inline-grid">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="users">Users</TabsTrigger>
             <TabsTrigger value="decks">Decks</TabsTrigger>
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="media">Media</TabsTrigger>
           </TabsList>
 
           <OverviewTab />
           <UsersTab />
           <DecksTab />
-          <FeaturesTab />
-          <MediaTab />
         </Tabs>
       </main>
       <footer className="flex items-end justify-start p-3">
