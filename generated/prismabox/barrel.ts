@@ -1,3 +1,4 @@
+export * from "./KeyFeatureType";
 export * from "./User";
 export * from "./Session";
 export * from "./Account";
@@ -5,5 +6,6 @@ export * from "./Verification";
 export * from "./Deck";
 export * from "./Image";
 export * from "./Price";
+export * from "./KeyFeature";
 export * from "./__nullable__";
 export * from "./__transformDate__";

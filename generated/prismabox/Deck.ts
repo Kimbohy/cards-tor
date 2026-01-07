@@ -45,6 +45,32 @@ export const DeckRelations = t.Object(
       ),
       { additionalProperties: false },
     ),
+    keyFeatures: t.Array(
+      t.Object(
+        {
+          id: t.String(),
+          deckId: t.String(),
+          title: t.String(),
+          detail: __nullable__(t.String()),
+          type: t.Union(
+            [
+              t.Literal("QUALITY"),
+              t.Literal("DESIGN"),
+              t.Literal("USABILITY"),
+              t.Literal("DURABILITY"),
+              t.Literal("UNIQUENESS"),
+              t.Literal("PRODUCTION"),
+              t.Literal("PRICE"),
+            ],
+            { additionalProperties: false },
+          ),
+          createdAt: t.Date(),
+          updatedAt: t.Date(),
+        },
+        { additionalProperties: false },
+      ),
+      { additionalProperties: false },
+    ),
   },
   { additionalProperties: false },
 );
@@ -96,6 +122,22 @@ export const DeckRelationsInputCreate = t.Object(
         { additionalProperties: false },
       ),
     ),
+    keyFeatures: t.Optional(
+      t.Object(
+        {
+          connect: t.Array(
+            t.Object(
+              {
+                id: t.String({ additionalProperties: false }),
+              },
+              { additionalProperties: false },
+            ),
+            { additionalProperties: false },
+          ),
+        },
+        { additionalProperties: false },
+      ),
+    ),
   },
   { additionalProperties: false },
 );
@@ -129,6 +171,31 @@ export const DeckRelationsInputUpdate = t.Partial(
         ),
       ),
       prices: t.Partial(
+        t.Object(
+          {
+            connect: t.Array(
+              t.Object(
+                {
+                  id: t.String({ additionalProperties: false }),
+                },
+                { additionalProperties: false },
+              ),
+              { additionalProperties: false },
+            ),
+            disconnect: t.Array(
+              t.Object(
+                {
+                  id: t.String({ additionalProperties: false }),
+                },
+                { additionalProperties: false },
+              ),
+              { additionalProperties: false },
+            ),
+          },
+          { additionalProperties: false },
+        ),
+      ),
+      keyFeatures: t.Partial(
         t.Object(
           {
             connect: t.Array(
@@ -231,6 +298,7 @@ export const DeckSelect = t.Partial(
       updatedAt: t.Boolean(),
       images: t.Boolean(),
       prices: t.Boolean(),
+      keyFeatures: t.Boolean(),
       _count: t.Boolean(),
     },
     { additionalProperties: false },
@@ -239,7 +307,12 @@ export const DeckSelect = t.Partial(
 
 export const DeckInclude = t.Partial(
   t.Object(
-    { images: t.Boolean(), prices: t.Boolean(), _count: t.Boolean() },
+    {
+      images: t.Boolean(),
+      prices: t.Boolean(),
+      keyFeatures: t.Boolean(),
+      _count: t.Boolean(),
+    },
     { additionalProperties: false },
   ),
 );

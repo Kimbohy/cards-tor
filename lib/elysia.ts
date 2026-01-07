@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
 import { auth } from "./auth";
-import { decksApi } from "./api/decks";
+import { deckApi } from "./api/deck";
 
 // Plugin Better Auth avec macro pour protéger les routes
 const betterAuthPlugin = new Elysia({ name: "better-auth" })
@@ -29,7 +29,7 @@ export const app = new Elysia({ prefix: "/api" })
   }))
   // Route protégée - info utilisateur
   .get("/me", ({ user }) => user, { auth: true })
-  .use(decksApi);
+  .use(deckApi);
 
 // Export du type pour Eden (type-safety côté client)
 // export type App = typeof app;
