@@ -79,8 +79,6 @@ export const DeckPlainInputCreate = t.Object(
   {
     name: t.String({
       minLength: 1,
-      maxLength: 255,
-      additionalProperties: false,
     }),
     description: t.Optional(__nullable__(t.String())),
   },

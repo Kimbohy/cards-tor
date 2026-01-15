@@ -20,12 +20,12 @@ export const KeyFeaturePlain = t.Object(
         t.Literal("PRODUCTION"),
         t.Literal("PRICE"),
       ],
-      { additionalProperties: false },
+      { additionalProperties: false }
     ),
     createdAt: t.Date(),
     updatedAt: t.Date(),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const KeyFeatureRelations = t.Object(
@@ -33,15 +33,17 @@ export const KeyFeatureRelations = t.Object(
     deck: t.Object(
       {
         id: t.String(),
-        name: t.String(),
+        name: t.String({
+          minLength: 1,
+        }),
         description: __nullable__(t.String()),
         createdAt: t.Date(),
         updatedAt: t.Date(),
       },
-      { additionalProperties: false },
+      { additionalProperties: false }
     ),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const KeyFeaturePlainInputCreate = t.Object(
@@ -59,11 +61,11 @@ export const KeyFeaturePlainInputCreate = t.Object(
           t.Literal("PRODUCTION"),
           t.Literal("PRICE"),
         ],
-        { additionalProperties: false },
-      ),
+        { additionalProperties: false }
+      )
     ),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const KeyFeaturePlainInputUpdate = t.Object(
@@ -81,11 +83,11 @@ export const KeyFeaturePlainInputUpdate = t.Object(
           t.Literal("PRODUCTION"),
           t.Literal("PRICE"),
         ],
-        { additionalProperties: false },
-      ),
+        { additionalProperties: false }
+      )
     ),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const KeyFeatureRelationsInputCreate = t.Object(
@@ -96,13 +98,13 @@ export const KeyFeatureRelationsInputCreate = t.Object(
           {
             id: t.String({ additionalProperties: false }),
           },
-          { additionalProperties: false },
+          { additionalProperties: false }
         ),
       },
-      { additionalProperties: false },
+      { additionalProperties: false }
     ),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const KeyFeatureRelationsInputUpdate = t.Partial(
@@ -114,14 +116,14 @@ export const KeyFeatureRelationsInputUpdate = t.Partial(
             {
               id: t.String({ additionalProperties: false }),
             },
-            { additionalProperties: false },
+            { additionalProperties: false }
           ),
         },
-        { additionalProperties: false },
+        { additionalProperties: false }
       ),
     },
-    { additionalProperties: false },
-  ),
+    { additionalProperties: false }
+  )
 );
 
 export const KeyFeatureWhere = t.Partial(
@@ -146,15 +148,15 @@ export const KeyFeatureWhere = t.Partial(
               t.Literal("PRODUCTION"),
               t.Literal("PRICE"),
             ],
-            { additionalProperties: false },
+            { additionalProperties: false }
           ),
           createdAt: t.Date(),
           updatedAt: t.Date(),
         },
-        { additionalProperties: false },
+        { additionalProperties: false }
       ),
-    { $id: "KeyFeature" },
-  ),
+    { $id: "KeyFeature" }
+  )
 );
 
 export const KeyFeatureWhereUnique = t.Recursive(
@@ -163,7 +165,7 @@ export const KeyFeatureWhereUnique = t.Recursive(
       [
         t.Partial(
           t.Object({ id: t.String() }, { additionalProperties: false }),
-          { additionalProperties: false },
+          { additionalProperties: false }
         ),
         t.Union([t.Object({ id: t.String() })], {
           additionalProperties: false,
@@ -180,7 +182,7 @@ export const KeyFeatureWhereUnique = t.Recursive(
             ]),
             OR: t.Array(Self, { additionalProperties: false }),
           }),
-          { additionalProperties: false },
+          { additionalProperties: false }
         ),
         t.Partial(
           t.Object(
@@ -199,18 +201,18 @@ export const KeyFeatureWhereUnique = t.Recursive(
                   t.Literal("PRODUCTION"),
                   t.Literal("PRICE"),
                 ],
-                { additionalProperties: false },
+                { additionalProperties: false }
               ),
               createdAt: t.Date(),
               updatedAt: t.Date(),
             },
-            { additionalProperties: false },
-          ),
+            { additionalProperties: false }
+          )
         ),
       ],
-      { additionalProperties: false },
+      { additionalProperties: false }
     ),
-  { $id: "KeyFeature" },
+  { $id: "KeyFeature" }
 );
 
 export const KeyFeatureSelect = t.Partial(
@@ -226,15 +228,15 @@ export const KeyFeatureSelect = t.Partial(
       deck: t.Boolean(),
       _count: t.Boolean(),
     },
-    { additionalProperties: false },
-  ),
+    { additionalProperties: false }
+  )
 );
 
 export const KeyFeatureInclude = t.Partial(
   t.Object(
     { type: t.Boolean(), deck: t.Boolean(), _count: t.Boolean() },
-    { additionalProperties: false },
-  ),
+    { additionalProperties: false }
+  )
 );
 
 export const KeyFeatureOrderBy = t.Partial(
@@ -259,8 +261,8 @@ export const KeyFeatureOrderBy = t.Partial(
         additionalProperties: false,
       }),
     },
-    { additionalProperties: false },
-  ),
+    { additionalProperties: false }
+  )
 );
 
 export const KeyFeature = t.Composite([KeyFeaturePlain, KeyFeatureRelations], {
@@ -269,10 +271,10 @@ export const KeyFeature = t.Composite([KeyFeaturePlain, KeyFeatureRelations], {
 
 export const KeyFeatureInputCreate = t.Composite(
   [KeyFeaturePlainInputCreate, KeyFeatureRelationsInputCreate],
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const KeyFeatureInputUpdate = t.Composite(
   [KeyFeaturePlainInputUpdate, KeyFeatureRelationsInputUpdate],
-  { additionalProperties: false },
+  { additionalProperties: false }
 );

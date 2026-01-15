@@ -16,9 +16,27 @@ import { t, type Static } from "elysia";
 
 // Sub-schemas for nested objects (re-exported for form field arrays)
 export const PriceInputSchema = t.Object(PricePlainInputCreate.properties);
-export const KeyFeatureInputSchema = t.Object(
-  KeyFeaturePlainInputCreate.properties
-);
+
+// Override KeyFeature schema to add validation
+export const KeyFeatureInputSchema = t.Object({
+  title: t.String({ minLength: 1 }),
+  detail: t.Optional(t.Union([t.String(), t.Null()])),
+  type: t.Optional(
+    t.Union(
+      [
+        t.Literal("QUALITY"),
+        t.Literal("DESIGN"),
+        t.Literal("USABILITY"),
+        t.Literal("DURABILITY"),
+        t.Literal("UNIQUENESS"),
+        t.Literal("PRODUCTION"),
+        t.Literal("PRICE"),
+      ],
+      { additionalProperties: false }
+    )
+  ),
+});
+
 export const ImageInputSchema = t.Object(ImagePlainInputCreate.properties);
 
 // Main schema for creating a deck
