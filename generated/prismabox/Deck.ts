@@ -12,7 +12,7 @@ export const DeckPlain = t.Object(
     createdAt: t.Date(),
     updatedAt: t.Date(),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const DeckRelations = t.Object(
@@ -27,9 +27,9 @@ export const DeckRelations = t.Object(
           createdAt: t.Date(),
           updatedAt: t.Date(),
         },
-        { additionalProperties: false },
+        { additionalProperties: false }
       ),
-      { additionalProperties: false },
+      { additionalProperties: false }
     ),
     prices: t.Array(
       t.Object(
@@ -41,9 +41,9 @@ export const DeckRelations = t.Object(
           createdAt: t.Date(),
           updatedAt: t.Date(),
         },
-        { additionalProperties: false },
+        { additionalProperties: false }
       ),
-      { additionalProperties: false },
+      { additionalProperties: false }
     ),
     keyFeatures: t.Array(
       t.Object(
@@ -62,22 +62,29 @@ export const DeckRelations = t.Object(
               t.Literal("PRODUCTION"),
               t.Literal("PRICE"),
             ],
-            { additionalProperties: false },
+            { additionalProperties: false }
           ),
           createdAt: t.Date(),
           updatedAt: t.Date(),
         },
-        { additionalProperties: false },
+        { additionalProperties: false }
       ),
-      { additionalProperties: false },
+      { additionalProperties: false }
     ),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const DeckPlainInputCreate = t.Object(
-  { name: t.String(), description: t.Optional(__nullable__(t.String())) },
-  { additionalProperties: false },
+  {
+    name: t.String({
+      minLength: 1,
+      maxLength: 255,
+      additionalProperties: false,
+    }),
+    description: t.Optional(__nullable__(t.String())),
+  },
+  { additionalProperties: false }
 );
 
 export const DeckPlainInputUpdate = t.Object(
@@ -85,7 +92,7 @@ export const DeckPlainInputUpdate = t.Object(
     name: t.Optional(t.String()),
     description: t.Optional(__nullable__(t.String())),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const DeckRelationsInputCreate = t.Object(
@@ -98,13 +105,13 @@ export const DeckRelationsInputCreate = t.Object(
               {
                 id: t.String({ additionalProperties: false }),
               },
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
-            { additionalProperties: false },
+            { additionalProperties: false }
           ),
         },
-        { additionalProperties: false },
-      ),
+        { additionalProperties: false }
+      )
     ),
     prices: t.Optional(
       t.Object(
@@ -114,13 +121,13 @@ export const DeckRelationsInputCreate = t.Object(
               {
                 id: t.String({ additionalProperties: false }),
               },
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
-            { additionalProperties: false },
+            { additionalProperties: false }
           ),
         },
-        { additionalProperties: false },
-      ),
+        { additionalProperties: false }
+      )
     ),
     keyFeatures: t.Optional(
       t.Object(
@@ -130,16 +137,16 @@ export const DeckRelationsInputCreate = t.Object(
               {
                 id: t.String({ additionalProperties: false }),
               },
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
-            { additionalProperties: false },
+            { additionalProperties: false }
           ),
         },
-        { additionalProperties: false },
-      ),
+        { additionalProperties: false }
+      )
     ),
   },
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const DeckRelationsInputUpdate = t.Partial(
@@ -153,22 +160,22 @@ export const DeckRelationsInputUpdate = t.Partial(
                 {
                   id: t.String({ additionalProperties: false }),
                 },
-                { additionalProperties: false },
+                { additionalProperties: false }
               ),
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
             disconnect: t.Array(
               t.Object(
                 {
                   id: t.String({ additionalProperties: false }),
                 },
-                { additionalProperties: false },
+                { additionalProperties: false }
               ),
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
           },
-          { additionalProperties: false },
-        ),
+          { additionalProperties: false }
+        )
       ),
       prices: t.Partial(
         t.Object(
@@ -178,22 +185,22 @@ export const DeckRelationsInputUpdate = t.Partial(
                 {
                   id: t.String({ additionalProperties: false }),
                 },
-                { additionalProperties: false },
+                { additionalProperties: false }
               ),
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
             disconnect: t.Array(
               t.Object(
                 {
                   id: t.String({ additionalProperties: false }),
                 },
-                { additionalProperties: false },
+                { additionalProperties: false }
               ),
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
           },
-          { additionalProperties: false },
-        ),
+          { additionalProperties: false }
+        )
       ),
       keyFeatures: t.Partial(
         t.Object(
@@ -203,26 +210,26 @@ export const DeckRelationsInputUpdate = t.Partial(
                 {
                   id: t.String({ additionalProperties: false }),
                 },
-                { additionalProperties: false },
+                { additionalProperties: false }
               ),
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
             disconnect: t.Array(
               t.Object(
                 {
                   id: t.String({ additionalProperties: false }),
                 },
-                { additionalProperties: false },
+                { additionalProperties: false }
               ),
-              { additionalProperties: false },
+              { additionalProperties: false }
             ),
           },
-          { additionalProperties: false },
-        ),
+          { additionalProperties: false }
+        )
       ),
     },
-    { additionalProperties: false },
-  ),
+    { additionalProperties: false }
+  )
 );
 
 export const DeckWhere = t.Partial(
@@ -239,10 +246,10 @@ export const DeckWhere = t.Partial(
           createdAt: t.Date(),
           updatedAt: t.Date(),
         },
-        { additionalProperties: false },
+        { additionalProperties: false }
       ),
-    { $id: "Deck" },
-  ),
+    { $id: "Deck" }
+  )
 );
 
 export const DeckWhereUnique = t.Recursive(
@@ -251,7 +258,7 @@ export const DeckWhereUnique = t.Recursive(
       [
         t.Partial(
           t.Object({ id: t.String() }, { additionalProperties: false }),
-          { additionalProperties: false },
+          { additionalProperties: false }
         ),
         t.Union([t.Object({ id: t.String() })], {
           additionalProperties: false,
@@ -268,7 +275,7 @@ export const DeckWhereUnique = t.Recursive(
             ]),
             OR: t.Array(Self, { additionalProperties: false }),
           }),
-          { additionalProperties: false },
+          { additionalProperties: false }
         ),
         t.Partial(
           t.Object(
@@ -279,13 +286,13 @@ export const DeckWhereUnique = t.Recursive(
               createdAt: t.Date(),
               updatedAt: t.Date(),
             },
-            { additionalProperties: false },
-          ),
+            { additionalProperties: false }
+          )
         ),
       ],
-      { additionalProperties: false },
+      { additionalProperties: false }
     ),
-  { $id: "Deck" },
+  { $id: "Deck" }
 );
 
 export const DeckSelect = t.Partial(
@@ -301,8 +308,8 @@ export const DeckSelect = t.Partial(
       keyFeatures: t.Boolean(),
       _count: t.Boolean(),
     },
-    { additionalProperties: false },
-  ),
+    { additionalProperties: false }
+  )
 );
 
 export const DeckInclude = t.Partial(
@@ -313,8 +320,8 @@ export const DeckInclude = t.Partial(
       keyFeatures: t.Boolean(),
       _count: t.Boolean(),
     },
-    { additionalProperties: false },
-  ),
+    { additionalProperties: false }
+  )
 );
 
 export const DeckOrderBy = t.Partial(
@@ -336,8 +343,8 @@ export const DeckOrderBy = t.Partial(
         additionalProperties: false,
       }),
     },
-    { additionalProperties: false },
-  ),
+    { additionalProperties: false }
+  )
 );
 
 export const Deck = t.Composite([DeckPlain, DeckRelations], {
@@ -346,10 +353,10 @@ export const Deck = t.Composite([DeckPlain, DeckRelations], {
 
 export const DeckInputCreate = t.Composite(
   [DeckPlainInputCreate, DeckRelationsInputCreate],
-  { additionalProperties: false },
+  { additionalProperties: false }
 );
 
 export const DeckInputUpdate = t.Composite(
   [DeckPlainInputUpdate, DeckRelationsInputUpdate],
-  { additionalProperties: false },
+  { additionalProperties: false }
 );

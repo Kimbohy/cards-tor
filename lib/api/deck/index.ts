@@ -3,6 +3,9 @@ import { DeckNotFoundError, deckService } from "./deck.service";
 import { CreateDeckSchema, PaginationParams } from "./deck.schema";
 import { DeckInputCreate } from "@/generated/prismabox/Deck";
 
+// Re-export all types and schemas for centralized imports
+export * from "./deck.schema";
+
 /**
  * Rout API for Decks
  */

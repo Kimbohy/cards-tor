@@ -116,15 +116,17 @@ const Nav = () => {
               className="text-secondary-foreground cursor-pointer hover:opacity-80 transition-opacity"
             />
           ))}
-          {NAV_CONFIG.links.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-2xl xl:text-3xl hover:opacity-80 transition-opacity text-secondary-foreground"
-            >
-              {label}
-            </Link>
-          ))}
+          {NAV_CONFIG.links.map(({ label, href }) =>
+            pathname === href ? null : (
+              <Link
+                key={href}
+                href={href}
+                className="text-2xl xl:text-3xl hover:opacity-80 transition-opacity text-secondary-foreground"
+              >
+                {label}
+              </Link>
+            )
+          )}
           {sessionLoading ? (
             // spinner placeholder while loading
             <Spinner className="size-8 text-secondary-foreground" />

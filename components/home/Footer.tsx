@@ -123,7 +123,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 md:space-x-8 text-center">
             <Link
               href="/admin"
-              className="hover:text-accent transition-colors duration-300 font-light"
+              className="text-accent hover:text-accent/75 transition-colors duration-300 font-bold dark:font-light"
             >
               Admin
             </Link>

@@ -4,19 +4,29 @@ import {
   KeyFeaturePlainInputCreate,
   PricePlainInputCreate,
 } from "@/generated/prismabox/barrel";
-import { t } from "elysia";
+import { t, type Static } from "elysia";
 
 /**
- * Schemas for Deck API
+ * Schemas for Deck API - Single Source of Truth
+ * These schemas are used for:
+ * 1. Runtime validation on the server (Elysia)
+ * 2. Type inference for client-side code (Static<typeof Schema>)
+ * 3. Form validation with React Hook Form (@hookform/resolvers/typebox)
  */
 
+// Sub-schemas for nested objects (re-exported for form field arrays)
+export const PriceInputSchema = t.Object(PricePlainInputCreate.properties);
+export const KeyFeatureInputSchema = t.Object(
+  KeyFeaturePlainInputCreate.properties
+);
+export const ImageInputSchema = t.Object(ImagePlainInputCreate.properties);
+
+// Main schema for creating a deck
 export const CreateDeckSchema = t.Object({
   ...DeckPlainInputCreate.properties,
-  prices: t.Optional(t.Array(t.Object(PricePlainInputCreate.properties))),
-  keyFeatures: t.Optional(
-    t.Array(t.Object(KeyFeaturePlainInputCreate.properties))
-  ),
-  images: t.Optional(t.Array(t.Object(ImagePlainInputCreate.properties))),
+  prices: t.Optional(t.Array(PriceInputSchema)),
+  keyFeatures: t.Optional(t.Array(KeyFeatureInputSchema)),
+  images: t.Optional(t.Array(ImageInputSchema)),
 });
 
 export const PaginationParams = t.Optional(
@@ -31,5 +41,22 @@ export const PaginationParams = t.Optional(
   })
 );
 
-export type CreateDeckSchemaType = typeof CreateDeckSchema.static;
-export type PaginationParamsType = typeof PaginationParams.static;
+// Type exports using Static for type inference from schemas
+export type CreateDeckInput = Static<typeof CreateDeckSchema>;
+export type PriceInput = Static<typeof PriceInputSchema>;
+export type KeyFeatureInput = Static<typeof KeyFeatureInputSchema>;
+export type ImageInput = Static<typeof ImageInputSchema>;
+export type PaginationParamsType = Static<typeof PaginationParams>;
+
+// Key feature types constant for UI (derived from schema)
+export const KEY_FEATURE_TYPES = [
+  "QUALITY",
+  "DESIGN",
+  "USABILITY",
+  "DURABILITY",
+  "UNIQUENESS",
+  "PRODUCTION",
+  "PRICE",
+] as const;
+
+export type KeyFeatureType = (typeof KEY_FEATURE_TYPES)[number];

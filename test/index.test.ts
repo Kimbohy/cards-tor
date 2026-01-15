@@ -1,4 +1,4 @@
-import { api } from "@/lib/eden";
+import { api } from "@/lib/eden-server";
 import { describe, expect, it } from "bun:test";
 
 describe("Elysia", () => {

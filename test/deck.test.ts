@@ -1,4 +1,4 @@
-import { api } from "@/lib/eden";
+import { api } from "@/lib/eden-server";
 import { describe, expect, it } from "bun:test";
 import { setupTestDatabase, testData } from "./setup";
 
@@ -32,7 +32,7 @@ describe("Deck", () => {
 
     // Now, retrieve all decks
     const { data, status } = await api.deck.get();
-    console.log(data);
+    // console.log(data);
     expect(status).toBe(200);
     expect(data?.success).toBe(true);
     expect(Array.isArray(data?.data)).toBe(true);

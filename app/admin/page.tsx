@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   AdminHeader,
@@ -8,9 +8,13 @@ import {
   UsersTab,
   DecksTab,
 } from "@/components/admin";
+import { useQueryState } from "nuqs";
+import { Skeleton } from "@/components/ui/skeleton";
 
-function Page() {
-  const [selectedTab, setSelectedTab] = useState("overview");
+function AdminContent() {
+  const [selectedTab, setSelectedTab] = useQueryState("tab", {
+    defaultValue: "overview",
+  });
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -43,4 +47,22 @@ function Page() {
   );
 }
 
-export default Page;
+function AdminSkeleton() {
+  return (
+    <div className="min-h-screen bg-background flex flex-col">
+      <Skeleton className="h-16 w-full" />
+      <main className="container mx-auto px-4 py-8 flex-1">
+        <Skeleton className="h-10 w-64 mb-6" />
+        <Skeleton className="h-96 w-full" />
+      </main>
+    </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<AdminSkeleton />}>
+      <AdminContent />
+    </Suspense>
+  );
+}

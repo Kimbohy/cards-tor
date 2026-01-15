@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { CreateDeckSchemaType, PaginationParamsType } from "./deck.schema";
+import { CreateDeckInput, PaginationParamsType } from "./deck.schema";
 // Custom error for deck not found
 export class DeckNotFoundError extends Error {
   constructor(id: string) {
@@ -9,7 +9,7 @@ export class DeckNotFoundError extends Error {
 }
 
 export const deckService = {
-  async create(data: CreateDeckSchemaType) {
+  async create(data: CreateDeckInput) {
     // An transaction to create a deck along with its price and key features
     const deck = await prisma.deck.create({
       data: {
