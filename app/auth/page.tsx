@@ -23,7 +23,7 @@ function LoginPageContent() {
 
   const [isLogin, setIsLogin] = useQueryState(
     "login",
-    parseAsBoolean.withDefault(true)
+    parseAsBoolean.withDefault(true),
   );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -183,7 +183,7 @@ function LoginPageContent() {
             <div className="text-center w-full">
               <Button
                 type="button"
-                variant="ghost"
+                variant="link"
                 onClick={() => {
                   setIsLogin(!isLogin);
                   setError("");

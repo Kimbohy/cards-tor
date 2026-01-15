@@ -535,7 +535,7 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
       <div className="container mx-auto px-4 pt-4 sm:pt-6 md:pt-8">
         <Link href="/decks">
           <Button
-            variant="outline"
+            variant="link"
             className="group border-border hover:border-primary text-sm sm:text-base"
           >
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -671,7 +671,7 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
       </section>
 
       {/* Additional Info Section */}
-      <section className="py-8 sm:py-12 md:py-16 bg-background border-t border-border">
+      {/* <section className="py-8 sm:py-12 md:py-16 bg-background border-t border-border">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-serif font-light mb-6 sm:mb-8 text-center text-primary">
@@ -714,7 +714,7 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
