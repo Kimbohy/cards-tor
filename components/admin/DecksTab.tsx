@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   Card,
@@ -45,114 +44,41 @@ import {
   Package,
 } from "lucide-react";
 import { AddDeckDialog } from "./AddDeckDialog";
-import { ViewDeckDialog, type DeckData } from "./ViewDeckDialog";
+import { ViewDeckDialog } from "./ViewDeckDialog";
 import { EditDeckDialog } from "./EditDeckDialog";
 import { DeleteConfirmDialog } from "./DeleteConfirmDialog";
-
-// Mock data with full structure matching Prisma schema
-const mockDecks: DeckData[] = [
-  {
-    id: "clx1234567890",
-    name: "Premium Playing Cards",
-    description:
-      "Luxury poker cards with gold foil accents. Perfect for collectors and professional card players. Made with premium 310gsm cardstock.",
-    createdAt: "2024-01-10T10:00:00Z",
-    updatedAt: "2024-01-10T10:00:00Z",
-    images: [
-      { id: "img1", url: "/images/deck1-front.jpg", altText: "Front view" },
-      { id: "img2", url: "/images/deck1-back.jpg", altText: "Back view" },
-      { id: "img3", url: "/images/deck1-box.jpg", altText: "Box design" },
-    ],
-    prices: [
-      { id: "price1", amount: 25.99, currency: "USD" },
-      { id: "price2", amount: 23.5, currency: "EUR" },
-    ],
-    keyFeatures: [
-      {
-        id: "kf1",
-        keyFeature: {
-          id: "f1",
-          title: "Premium Card Stock",
-          detail: "Made with 310gsm cardstock for superior handling",
-          type: "QUALITY",
-        },
-      },
-      {
-        id: "kf2",
-        keyFeature: {
-          id: "f2",
-          title: "Gold Foil Accents",
-          detail: "Elegant gold foil on tuck box and card backs",
-          type: "DESIGN",
-        },
-      },
-      {
-        id: "kf3",
-        keyFeature: {
-          id: "f3",
-          title: "Air-Cushion Finish",
-          detail: "Smooth handling for cardistry and magic",
-          type: "USABILITY",
-        },
-      },
-    ],
-  },
-  {
-    id: "clx9876543210",
-    name: "Tarot Deck Deluxe",
-    description:
-      "Hand-illustrated tarot cards with intricate designs. Each card tells a story.",
-    createdAt: "2024-02-15T14:30:00Z",
-    updatedAt: "2024-02-20T09:15:00Z",
-    images: [
-      { id: "img4", url: "/images/deck2-spread.jpg", altText: "Card spread" },
-    ],
-    prices: [{ id: "price3", amount: 45.0, currency: "USD" }],
-    keyFeatures: [
-      {
-        id: "kf4",
-        keyFeature: {
-          id: "f4",
-          title: "Hand-Illustrated",
-          detail: "Each card uniquely illustrated by artist",
-          type: "UNIQUENESS",
-        },
-      },
-      {
-        id: "kf5",
-        keyFeature: {
-          id: "f5",
-          title: "Premium Linen Finish",
-          detail: "Durable linen finish for years of use",
-          type: "DURABILITY",
-        },
-      },
-    ],
-  },
-  {
-    id: "clx1122334455",
-    name: "Custom Game Cards",
-    description: "Design your own game with these customizable cards.",
-    createdAt: "2024-03-20T08:45:00Z",
-    updatedAt: "2024-03-20T08:45:00Z",
-    images: [],
-    prices: [{ id: "price4", amount: 37.5, currency: "USD" }],
-    keyFeatures: [],
-  },
-];
+import { api } from "@/lib/eden-client";
+import { useEffect, useMemo, useState } from "react";
+import type { Deck } from "@/types/api";
 
 export function DecksTab() {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [filterBy, setFilterBy] = React.useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterBy, setFilterBy] = useState("all");
 
   // Dialog states
-  const [viewDeck, setViewDeck] = React.useState<DeckData | null>(null);
-  const [editDeck, setEditDeck] = React.useState<DeckData | null>(null);
-  const [deleteDeck, setDeleteDeck] = React.useState<DeckData | null>(null);
+  const [viewDeck, setViewDeck] = useState<Deck | null>(null);
+  const [editDeck, setEditDeck] = useState<Deck | null>(null);
+  const [deleteDeck, setDeleteDeck] = useState<Deck | null>(null);
+
+  // Decks
+  const [decks, setDecks] = useState<Deck[]>([]);
+
+  useEffect(() => {
+    const fetchDecks = async () => {
+      const response = await api.deck.get();
+
+      if (response.status === 200 && response.data) {
+        setDecks(response.data.decks);
+      } else {
+        console.error("Failed to fetch decks:", response.error);
+      }
+    };
+    fetchDecks();
+  }, []);
 
   // Filter decks based on search and filter
-  const filteredDecks = React.useMemo(() => {
-    return mockDecks.filter((deck) => {
+  const filteredDecks = useMemo(() => {
+    return decks.filter((deck) => {
       const matchesSearch =
         deck.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         deck.description?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -169,7 +95,7 @@ export function DecksTab() {
     });
   }, [searchTerm, filterBy]);
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: Date) => {
     return new Date(dateString).toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",
@@ -177,7 +103,7 @@ export function DecksTab() {
     });
   };
 
-  const formatPrice = (deck: DeckData) => {
+  const formatPrice = (deck: Deck) => {
     if (deck.prices.length === 0) return "—";
     const mainPrice = deck.prices[0];
     return new Intl.NumberFormat("en-US", {
@@ -348,7 +274,7 @@ export function DecksTab() {
             {/* Results count */}
             {filteredDecks.length > 0 && (
               <p className="text-sm text-muted-foreground text-center">
-                Showing {filteredDecks.length} of {mockDecks.length} decks
+                Showing {filteredDecks.length} of {decks.length} decks
               </p>
             )}
           </div>

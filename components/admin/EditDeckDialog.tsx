@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -41,7 +40,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import type { DeckData, DeckImage } from "./ViewDeckDialog";
+import type { Deck, DeckImage } from "@/types/api";
+import { useEffect, useState } from "react";
 
 // Types
 const KEY_FEATURE_TYPES = [
@@ -82,7 +82,7 @@ interface EditDeckFormData {
 }
 
 interface EditDeckDialogProps {
-  deck: DeckData | null;
+  deck: Deck | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSave?: (deckId: string, data: EditDeckFormData) => void;
@@ -94,7 +94,7 @@ export function EditDeckDialog({
   onOpenChange,
   onSave,
 }: EditDeckDialogProps) {
-  const [formData, setFormData] = React.useState<EditDeckFormData>({
+  const [formData, setFormData] = useState<EditDeckFormData>({
     name: "",
     description: "",
     prices: [],
@@ -103,15 +103,13 @@ export function EditDeckDialog({
     newImages: [],
     imagesToDelete: [],
   });
-  const [errors, setErrors] = React.useState<Record<string, string>>({});
-  const [showUnsavedDialog, setShowUnsavedDialog] = React.useState(false);
-  const [hasChanges, setHasChanges] = React.useState(false);
-  const [expandedFeature, setExpandedFeature] = React.useState<string | null>(
-    null
-  );
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showUnsavedDialog, setShowUnsavedDialog] = useState(false);
+  const [hasChanges, setHasChanges] = useState(false);
+  const [expandedFeature, setExpandedFeature] = useState<string | null>(null);
 
   // Initialize form data when deck changes
-  React.useEffect(() => {
+  useEffect(() => {
     if (deck && open) {
       setFormData({
         name: deck.name,
@@ -123,9 +121,9 @@ export function EditDeckDialog({
         })),
         keyFeatures: deck.keyFeatures.map((kf) => ({
           id: kf.id,
-          title: kf.keyFeature.title,
-          detail: kf.keyFeature.detail || "",
-          type: kf.keyFeature.type as KeyFeatureType,
+          title: kf.title,
+          detail: kf.detail || "",
+          type: kf.type as KeyFeatureType,
         })),
         existingImages: deck.images,
         newImages: [],
@@ -138,7 +136,7 @@ export function EditDeckDialog({
 
   const updateFormData = <K extends keyof EditDeckFormData>(
     key: K,
-    value: EditDeckFormData[K]
+    value: EditDeckFormData[K],
   ) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
     setHasChanges(true);
@@ -196,7 +194,7 @@ export function EditDeckDialog({
   const updatePrice = (
     index: number,
     field: keyof EditablePrice,
-    value: string
+    value: string,
   ) => {
     const newPrices = [...formData.prices];
     newPrices[index] = { ...newPrices[index], [field]: value };
@@ -207,7 +205,7 @@ export function EditDeckDialog({
     if (formData.prices.length > 1) {
       updateFormData(
         "prices",
-        formData.prices.filter((_, i) => i !== index)
+        formData.prices.filter((_, i) => i !== index),
       );
     }
   };
@@ -229,7 +227,7 @@ export function EditDeckDialog({
   const updateKeyFeature = (
     index: number,
     field: keyof EditableKeyFeature,
-    value: string
+    value: string,
   ) => {
     const newFeatures = [...formData.keyFeatures];
     newFeatures[index] = { ...newFeatures[index], [field]: value };
@@ -239,7 +237,7 @@ export function EditDeckDialog({
   const removeKeyFeature = (index: number) => {
     updateFormData(
       "keyFeatures",
-      formData.keyFeatures.filter((_, i) => i !== index)
+      formData.keyFeatures.filter((_, i) => i !== index),
     );
   };
 
@@ -247,7 +245,7 @@ export function EditDeckDialog({
   const removeExistingImage = (imageId: string) => {
     updateFormData(
       "existingImages",
-      formData.existingImages.filter((img) => img.id !== imageId)
+      formData.existingImages.filter((img) => img.id !== imageId),
     );
     updateFormData("imagesToDelete", [...formData.imagesToDelete, imageId]);
   };
@@ -331,7 +329,7 @@ export function EditDeckDialog({
                             }
                             className={cn(
                               "flex-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
-                              errors[`price-${index}`] && "border-destructive"
+                              errors[`price-${index}`] && "border-destructive",
                             )}
                           />
                           <Select
@@ -440,7 +438,7 @@ export function EditDeckDialog({
                             className={cn(
                               "border rounded-lg transition-colors",
                               isExpanded && "border-primary/50 bg-muted/30",
-                              hasError && "border-destructive/50"
+                              hasError && "border-destructive/50",
                             )}
                           >
                             {/* Collapsed Header */}
@@ -455,7 +453,7 @@ export function EditDeckDialog({
                                   <ChevronDown
                                     className={cn(
                                       "size-4 transition-transform duration-200",
-                                      isExpanded && "rotate-180"
+                                      isExpanded && "rotate-180",
                                     )}
                                   />
                                 </Button>
@@ -524,11 +522,11 @@ export function EditDeckDialog({
                                         updateKeyFeature(
                                           index,
                                           "title",
-                                          e.target.value
+                                          e.target.value,
                                         )
                                       }
                                       className={cn(
-                                        hasError && "border-destructive"
+                                        hasError && "border-destructive",
                                       )}
                                     />
                                   </div>
@@ -574,7 +572,7 @@ export function EditDeckDialog({
                                       updateKeyFeature(
                                         index,
                                         "detail",
-                                        e.target.value
+                                        e.target.value,
                                       )
                                     }
                                     rows={2}

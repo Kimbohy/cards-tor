@@ -32,10 +32,6 @@ export interface FeaturesStepProps extends BaseStepProps {
   setExpandedFeature: (id: string | null) => void;
 }
 
-export interface ImagesStepProps extends BaseStepProps {
-  imageFields: UseFieldArrayReturn<CreateDeckInput, "images">["fields"];
-  appendImage: UseFieldArrayReturn<CreateDeckInput, "images">["append"];
-  removeImage: UseFieldArrayReturn<CreateDeckInput, "images">["remove"];
-}
+export interface ImagesStepProps extends BaseStepProps {}
 
 export type { CreateDeckInput, KeyFeatureType };

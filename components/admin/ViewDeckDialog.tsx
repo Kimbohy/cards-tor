@@ -19,43 +19,10 @@ import {
   Calendar,
   Edit,
 } from "lucide-react";
-
-// Types matching Prisma schema
-export interface DeckImage {
-  id: string;
-  url: string;
-  altText?: string | null;
-}
-
-export interface DeckPrice {
-  id: string;
-  amount: number;
-  currency: string;
-}
-
-export interface DeckKeyFeature {
-  id: string;
-  keyFeature: {
-    id: string;
-    title: string;
-    detail?: string | null;
-    type: string;
-  };
-}
-
-export interface DeckData {
-  id: string;
-  name: string;
-  description?: string | null;
-  createdAt: string;
-  updatedAt: string;
-  images: DeckImage[];
-  prices: DeckPrice[];
-  keyFeatures: DeckKeyFeature[];
-}
+import type { Deck, DeckPrice } from "@/types/api";
 
 interface ViewDeckDialogProps {
-  deck: DeckData | null;
+  deck: Deck | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onEdit?: () => void;
@@ -69,7 +36,7 @@ export function ViewDeckDialog({
 }: ViewDeckDialogProps) {
   if (!deck) return null;
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: Date) => {
     return new Date(dateString).toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
@@ -178,17 +145,15 @@ export function ViewDeckDialog({
                       className="flex items-start gap-3 p-3 rounded-lg border bg-muted/30"
                     >
                       <Badge
-                        className={`shrink-0 ${getFeatureTypeBadgeColor(df.keyFeature.type)}`}
+                        className={`shrink-0 ${getFeatureTypeBadgeColor(df.type)}`}
                       >
-                        {df.keyFeature.type}
+                        {df.type}
                       </Badge>
                       <div className="space-y-1">
-                        <p className="text-sm font-medium">
-                          {df.keyFeature.title}
-                        </p>
-                        {df.keyFeature.detail && (
+                        <p className="text-sm font-medium">{df.title}</p>
+                        {df.detail && (
                           <p className="text-xs text-muted-foreground">
-                            {df.keyFeature.detail}
+                            {df.detail}
                           </p>
                         )}
                       </div>

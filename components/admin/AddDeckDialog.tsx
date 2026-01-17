@@ -65,6 +65,7 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
   const [currentStep, setCurrentStep] = useState<StepId>("info");
   const [expandedFeature, setExpandedFeature] = useState<string | null>(null);
   const [apiError, setApiError] = useState<string | null>(null);
+  const [isReadyToSubmit, setIsReadyToSubmit] = useState(false);
 
   // React Hook Form setup with TypeBox resolver
   const {
@@ -99,12 +100,6 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
     remove: removeFeature,
   } = useFieldArray({ control, name: "keyFeatures" });
 
-  const {
-    fields: imageFields,
-    append: appendImage,
-    remove: removeImage,
-  } = useFieldArray({ control, name: "images" });
-
   const currentStepIndex = STEPS.findIndex((s) => s.id === currentStep);
   const isLastStep = currentStepIndex === STEPS.length - 1;
   const isFirstStep = currentStepIndex === 0;
@@ -125,6 +120,7 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
       setCurrentStep("info");
       setExpandedFeature(null);
       setApiError(null);
+      setIsReadyToSubmit(false);
     }
   }, [open, reset]);
 
@@ -132,11 +128,13 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
   const validateCurrentStep = async (): Promise<boolean> => {
     switch (currentStep) {
       case "info":
-        return triggerValidation(["name", "description"]);
+        return await triggerValidation(["name", "description"], {
+          shouldFocus: true,
+        });
       case "pricing":
-        return triggerValidation("prices");
+        return await triggerValidation("prices", { shouldFocus: true });
       case "features":
-        return triggerValidation("keyFeatures");
+        return await triggerValidation("keyFeatures", { shouldFocus: true });
       case "images":
         // Always return true for images since they're optional
         // Individual image URLs are validated if present
@@ -147,6 +145,9 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
   };
 
   const handleNext = async () => {
+    // Prevent rapid clicking
+    if (isSubmitting) return;
+
     const isValid = await validateCurrentStep();
     if (!isValid) return;
 
@@ -165,6 +166,11 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
 
   // Submit handler
   const onSubmit = async (data: CreateDeckInput) => {
+    // Prevent submission unless user explicitly clicked submit
+    if (!isReadyToSubmit) {
+      return;
+    }
+
     setApiError(null);
 
     try {
@@ -184,7 +190,7 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
       setOpen(false);
     } catch (err) {
       setApiError(
-        err instanceof Error ? err.message : "An unexpected error occurred"
+        err instanceof Error ? err.message : "An unexpected error occurred",
       );
     }
   };
@@ -223,14 +229,7 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
         );
       case "images":
         return (
-          <ImagesStep
-            register={register}
-            control={control}
-            errors={errors}
-            imageFields={imageFields}
-            appendImage={appendImage}
-            removeImage={removeImage}
-          />
+          <ImagesStep register={register} control={control} errors={errors} />
         );
       default:
         return null;
@@ -277,7 +276,7 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
                       "flex flex-col items-center gap-1 transition-colors",
                       index <= currentStepIndex && "cursor-pointer",
                       index > currentStepIndex &&
-                        "cursor-not-allowed opacity-50"
+                        "cursor-not-allowed opacity-50",
                     )}
                   >
                     <div
@@ -289,7 +288,7 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
                           "border-primary bg-primary/10 text-primary",
                         !isActive &&
                           !isCompleted &&
-                          "border-muted-foreground/30"
+                          "border-muted-foreground/30",
                       )}
                     >
                       {isCompleted ? (
@@ -303,7 +302,7 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
                         "text-xs font-medium hidden sm:block",
                         isActive && "text-primary",
                         isCompleted && "text-primary",
-                        !isActive && !isCompleted && "text-muted-foreground"
+                        !isActive && !isCompleted && "text-muted-foreground",
                       )}
                     >
                       {step.label}
@@ -313,7 +312,7 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
                     <div
                       className={cn(
                         "h-0.5 flex-1 mx-2",
-                        index < currentStepIndex ? "bg-primary" : "bg-muted"
+                        index < currentStepIndex ? "bg-primary" : "bg-muted",
                       )}
                     />
                   )}
@@ -326,7 +325,15 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
         <Separator className="mt-4" />
 
         {/* Step Content */}
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          onKeyDown={(e) => {
+            // Prevent Enter key from submitting the form
+            if (e.key === "Enter" && !isReadyToSubmit) {
+              e.preventDefault();
+            }
+          }}
+        >
           <ScrollArea className="flex-1 px-6">
             <div className="py-4 min-h-75">{renderStepContent()}</div>
           </ScrollArea>
@@ -363,7 +370,11 @@ export function AddDeckDialog({ trigger, onSuccess }: AddDeckDialogProps) {
                   Cancel
                 </Button>
                 {isLastStep ? (
-                  <Button type="submit" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    onClick={() => setIsReadyToSubmit(true)}
+                  >
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-1 size-4 animate-spin" />

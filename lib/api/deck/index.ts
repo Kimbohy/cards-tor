@@ -16,7 +16,7 @@ export const deckApi = new Elysia({ prefix: "/deck" })
     async ({ body, set }) => {
       const deck = await deckService.create(body);
       set.status = 201;
-      return { success: true, data: deck };
+      return { deck };
     },
     {
       body: CreateDeckSchema,
@@ -24,7 +24,7 @@ export const deckApi = new Elysia({ prefix: "/deck" })
         summary: "Create a new deck",
         tags: ["Decks"],
       },
-    }
+    },
   )
 
   .get(
@@ -32,13 +32,12 @@ export const deckApi = new Elysia({ prefix: "/deck" })
     async ({ query, set }) => {
       const { decks, pagination } = await deckService.getAll(query);
       set.status = 200;
-      return { success: true, data: decks, pagination };
+      return { decks, pagination };
     },
     {
-      query: PaginationParams,
       detail: {
         summary: "Get all decks",
         tags: ["Decks"],
       },
-    }
+    },
   );

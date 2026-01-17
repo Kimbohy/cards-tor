@@ -1,9 +1,16 @@
 "use client";
 
-import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Upload, X, ImageIcon, FileIcon } from "lucide-react";
+import { Upload, X, FileIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  DragEvent,
+} from "react";
 
 export interface FileWithPreview extends File {
   preview?: string;
@@ -32,11 +39,11 @@ function Dropzone({
   placeholder = "Drag and drop files here, or click to browse",
   showPreviews = true,
 }: DropzoneProps) {
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const [isDragOver, setIsDragOver] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [isDragOver, setIsDragOver] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleFiles = React.useCallback(
+  const handleFiles = useCallback(
     (files: FileList | null) => {
       if (!files || disabled) return;
 
@@ -47,7 +54,7 @@ function Dropzone({
         // Check file size
         if (file.size > maxSize) {
           setError(
-            `File "${file.name}" is too large. Max size is ${formatBytes(maxSize)}`
+            `File "${file.name}" is too large. Max size is ${formatBytes(maxSize)}`,
           );
           return;
         }
@@ -72,55 +79,52 @@ function Dropzone({
         onChange?.([...value, ...newFiles]);
       }
     },
-    [value, onChange, maxFiles, maxSize, disabled]
+    [value, onChange, maxFiles, maxSize, disabled],
   );
 
-  const handleDrop = React.useCallback(
-    (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = useCallback(
+    (e: DragEvent<HTMLDivElement>) => {
       e.preventDefault();
       e.stopPropagation();
       setIsDragOver(false);
       handleFiles(e.dataTransfer.files);
     },
-    [handleFiles]
+    [handleFiles],
   );
 
-  const handleDragOver = React.useCallback(
-    (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDragOver = useCallback(
+    (e: DragEvent<HTMLDivElement>) => {
       e.preventDefault();
       e.stopPropagation();
       if (!disabled) {
         setIsDragOver(true);
       }
     },
-    [disabled]
+    [disabled],
   );
 
-  const handleDragLeave = React.useCallback(
-    (e: React.DragEvent<HTMLDivElement>) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setIsDragOver(false);
-    },
-    []
-  );
+  const handleDragLeave = useCallback((e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(false);
+  }, []);
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     if (!disabled) {
       inputRef.current?.click();
     }
   }, [disabled]);
 
-  const handleInputChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
       handleFiles(e.target.files);
       // Reset input so the same file can be selected again
       e.target.value = "";
     },
-    [handleFiles]
+    [handleFiles],
   );
 
-  const handleRemove = React.useCallback(
+  const handleRemove = useCallback(
     (index: number) => {
       const fileToRemove = value[index];
       if (fileToRemove.preview) {
@@ -130,11 +134,11 @@ function Dropzone({
       onChange?.(newFiles);
       setError(null);
     },
-    [value, onChange]
+    [value, onChange],
   );
 
   // Cleanup previews on unmount
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       value.forEach((file) => {
         if (file.preview) {
@@ -160,7 +164,7 @@ function Dropzone({
             isDragOver && "border-primary bg-primary/5",
             !isDragOver &&
               "border-muted-foreground/25 hover:border-muted-foreground/50",
-            disabled && "cursor-not-allowed opacity-50"
+            disabled && "cursor-not-allowed opacity-50",
           )}
         >
           <input
